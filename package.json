@@ -14,6 +14,7 @@
   "devDependencies": {
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@types/styled-components": "^5.1.26",
     "@types/webpack-dev-server": "^4.7.2",
     "css-loader": "^6.7.2",
     "html-webpack-plugin": "^5.5.0",
@@ -28,6 +29,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
   }
 }
