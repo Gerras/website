@@ -1,14 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-interface Theme {
-  theme: {
-    colors: {
-      body: string;
-    };
-  };
-}
-
-export default createGlobalStyle<Theme>`
+export default createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
@@ -17,7 +9,7 @@ export default createGlobalStyle<Theme>`
     font-family: 'Roboto', sans-serif;
 }
 body {
-    background-color: ${(props) => props.theme.colors.body};
+    background-color: ${(props) => props.theme.palette.primary.main};
 }
 #root{
     margin: 0 auto;

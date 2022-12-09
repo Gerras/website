@@ -1,51 +1,33 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../styles/GlobalStyle";
+import { darkTheme, defaultTheme } from "../styles/Theme";
+import NavBar from "./NavBar/NavBar";
+import NavContainer from "./NavBar/NavContainer";
 import TypoGraphy from "./Typography/Typography";
 
-interface Theme {
-  name: string;
-  colors: {
-    main: string;
-    body: string;
-  };
-}
-
-const lightTheme: Theme = {
-  name: "light",
-  colors: {
-    main: "black",
-    body: "#E1E2E1",
-  },
-};
-
-const darkTheme: Theme = {
-  name: "dark",
-  colors: {
-    main: "white",
-    body: "black",
-  },
-};
-
 const App: React.FC = () => {
-  const [theme, setTheme] = useState(lightTheme);
+  const [theme, setTheme] = useState(defaultTheme);
 
   const handleOnClick = () => {
-    console.log("HERE");
-    if (theme.name === "light") {
-      console.log("HERE DARK");
+    if (theme.name === "default") {
       setTheme(darkTheme);
     } else {
-      console.log("HERE LIGHT");
-      setTheme(lightTheme);
+      setTheme(defaultTheme);
     }
   };
-  console.log("theme", theme);
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <button onClick={handleOnClick}>Click me to switch theme</button>
+        <NavBar>
+          <NavContainer>
+            <TypoGraphy>This will be the nav</TypoGraphy>
+            <button onClick={handleOnClick}>Click me to switch theme</button>
+          </NavContainer>
+        </NavBar>
+
         <TypoGraphy variant="p" gutterBottom>
           Hi this is kevins personal website
         </TypoGraphy>

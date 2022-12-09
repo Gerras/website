@@ -8,14 +8,12 @@ interface TypographyProps {
   children?: ReactNode;
   display?: Display;
   gutterBottom?: boolean;
-  primary?: boolean;
   variant?: Variant;
 }
 
 interface TypographyRootProps {
   display: Display;
   gutterBottom: boolean;
-  primary: boolean;
   variant: Variant;
 }
 
@@ -30,7 +28,7 @@ const fontSizeMap: Record<Variant, string> = {
 };
 
 const TypographyRoot = styled.span<TypographyRootProps>`
-  color: ${(props) => props.theme.colors.main};
+  color: ${(props) => props.theme.palette.primary.contrastText};
   display: ${(props) => props.display};
   font-size: ${(props) => fontSizeMap[props.variant]};
   font-weight: 400;
@@ -40,7 +38,6 @@ const TypographyRoot = styled.span<TypographyRootProps>`
 const TypoGraphy: React.FC<TypographyProps> = (props) => {
   const variant = props.variant ?? "p";
   const gutterBottom = !!props.gutterBottom;
-  const primary = props.primary ?? true;
   const display = props.display ?? "block";
 
   return (
@@ -48,7 +45,6 @@ const TypoGraphy: React.FC<TypographyProps> = (props) => {
       as={variant}
       display={display}
       gutterBottom={gutterBottom}
-      primary={primary}
       variant={variant}
     >
       {props.children}
