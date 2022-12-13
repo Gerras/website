@@ -5,10 +5,9 @@ const NavContainer = styled.div`
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
+  min-height: 64px;
   justify-content: space-evenly;
-  @media (min-width: 600px) {
-    min-height: 64px;
-  }
+  min-height: 64px;
 `;
 
 export default NavContainer;

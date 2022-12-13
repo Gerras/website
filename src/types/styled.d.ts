@@ -15,6 +15,9 @@ declare module "styled-components" {
       };
       primary: IPalette;
       secondary: IPalette;
+      background: {
+        default: string;
+      };
     };
   }
 }

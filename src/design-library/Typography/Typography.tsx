@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { CSSObject } from "styled-components";
 import React, { ReactNode } from "react";
+import { translateStyles } from "./Typography.utils";
 
 type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 type Display = "block" | "flex";
@@ -9,12 +10,14 @@ interface TypographyProps {
   display?: Display;
   gutterBottom?: boolean;
   variant?: Variant;
+  directStyles?: CSSObject;
 }
 
 interface TypographyRootProps {
-  display: Display;
+  display?: Display;
   gutterBottom: boolean;
   variant: Variant;
+  styles: string;
 }
 
 const fontSizeMap: Record<Variant, string> = {
@@ -32,13 +35,15 @@ const TypographyRoot = styled.span<TypographyRootProps>`
   display: ${(props) => props.display};
   font-size: ${(props) => fontSizeMap[props.variant]};
   font-weight: 400;
-  margin-bottom: 0.35em;
+  margin-bottom: ${(props) => (props.gutterBottom ? "0.35em" : "0")};
+  ${(props) => props.styles}
 `;
 
-const TypoGraphy: React.FC<TypographyProps> = (props) => {
+const Typography: React.FC<TypographyProps> = (props) => {
   const variant = props.variant ?? "p";
   const gutterBottom = !!props.gutterBottom;
-  const display = props.display ?? "block";
+  const display = props.display;
+  const directStyles = translateStyles(props.directStyles);
 
   return (
     <TypographyRoot
@@ -46,10 +51,11 @@ const TypoGraphy: React.FC<TypographyProps> = (props) => {
       display={display}
       gutterBottom={gutterBottom}
       variant={variant}
+      styles={directStyles}
     >
       {props.children}
     </TypographyRoot>
   );
 };
 
-export default TypoGraphy;
+export default Typography;

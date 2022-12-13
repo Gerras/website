@@ -5,16 +5,19 @@ export const defaultTheme: DefaultTheme = {
   borderRadius: "4px",
   palette: {
     common: {
-      black: "#222831",
+      black: "#000",
       white: "#ffffff",
     },
     primary: {
-      main: "#fffff",
+      main: "#1976d2",
       contrastText: "#000",
     },
     secondary: {
-      main: "#709fb0",
-      contrastText: "#ffffff",
+      main: "#9c27b0",
+      contrastText: "#000",
+    },
+    background: {
+      default: "#fffff",
     },
   },
 };
@@ -24,16 +27,19 @@ export const darkTheme: DefaultTheme = {
   borderRadius: "4px",
   palette: {
     common: {
-      black: "#222831",
+      black: "#000000",
       white: "#ffffff",
     },
     primary: {
-      main: "#222831",
+      main: "#90caf9",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#1b171f",
+      main: "#ce93d8",
       contrastText: "#ffffff",
+    },
+    background: {
+      default: "#222831",
     },
   },
 };
