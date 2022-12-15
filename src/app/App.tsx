@@ -7,6 +7,7 @@ import NavContainer from "../design-library/NavBar/NavContainer";
 import Typography from "../design-library/Typography/Typography";
 import { Header } from "./components/Header/Header";
 import { TypographyExample } from "./components/TypographyExample/TypographyExample";
+import Container from "../design-library/Container/Container";
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState(defaultTheme);
@@ -16,7 +17,9 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Header theme={theme} onButtonClick={setTheme} />
-        <TypographyExample />
+        <Container maxWidth="md">
+          <TypographyExample />
+        </Container>
       </ThemeProvider>
     </StrictMode>
   );

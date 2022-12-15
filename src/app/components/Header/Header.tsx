@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
     }
   };
   return (
-    <NavBar>
+    <NavBar sticky>
       <NavContainer>
         <Typography directStyles={{ flex: 1 }}>Kevin Brauen</Typography>
         <button onClick={handleOnClick}>Click me to switch theme</button>
