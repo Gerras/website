@@ -1,7 +1,9 @@
 // styled.d.ts
 import "styled-components";
+import { RGB } from "../utils/hex-to-rgb.utils";
 interface IPalette {
   main: string;
+  rgbMain: RGB;
   contrastText: string;
 }
 declare module "styled-components" {
@@ -15,9 +17,7 @@ declare module "styled-components" {
       };
       primary: IPalette;
       secondary: IPalette;
-      background: {
-        default: string;
-      };
+      background: IPalette;
     };
   }
 }

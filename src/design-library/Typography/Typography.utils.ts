@@ -1,7 +1,9 @@
 import { CSSObject } from "styled-components";
 
 export const translateStyles = (styles?: CSSObject) => {
-  if (!styles) return "";
+  if (!styles) {
+    return "";
+  }
   const stylesString = Object.entries(styles).reduce<string>(
     (acc, [key, value]) => {
       const regexResponse = key.split(/(?=[A-Z])/);

@@ -1,5 +1,6 @@
 import React from "react";
 import { DefaultTheme } from "styled-components";
+import Button from "../../../design-library/Button/Button";
 import NavBar from "../../../design-library/NavBar/NavBar";
 import NavContainer from "../../../design-library/NavBar/NavContainer";
 import Typography from "../../../design-library/Typography/Typography";
@@ -22,7 +23,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
     <NavBar sticky>
       <NavContainer>
         <Typography directStyles={{ flex: 1 }}>Kevin Brauen</Typography>
-        <button onClick={handleOnClick}>Click me to switch theme</button>
+        <Button type="primary" size="md" onClick={handleOnClick}>
+          Click me to switch theme
+        </Button>
       </NavContainer>
     </NavBar>
   );

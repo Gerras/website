@@ -17,7 +17,7 @@ interface ContainerBaseProps {
 }
 
 const ContainerRoot = styled.div<ContainerRootProps>`
-  background-color: ${(props) => props.theme.palette.background.default};
+  background-color: ${(props) => props.theme.palette.background.main};
   height: 100vh;
 `;
 

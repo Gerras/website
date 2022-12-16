@@ -31,7 +31,7 @@ const fontSizeMap: Record<Variant, string> = {
 };
 
 const TypographyRoot = styled.span<TypographyRootProps>`
-  color: ${(props) => props.theme.palette.primary.contrastText};
+  color: ${(props) => props.theme.palette.background.contrastText};
   display: ${(props) => props.display};
   font-size: ${(props) => fontSizeMap[props.variant]};
   font-weight: 400;
