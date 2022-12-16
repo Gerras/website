@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 const NavContainer = styled.div`
-  display: flex;
   align-items: center;
-  padding-left: 24px;
-  padding-right: 24px;
-  min-height: 64px;
+  display: flex;
   justify-content: space-evenly;
   min-height: 64px;
+  min-height: 64px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 export default NavContainer;

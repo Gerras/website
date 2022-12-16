@@ -1,10 +1,10 @@
 import React from "react";
 import { DefaultTheme } from "styled-components";
-import Button from "../../../design-library/Button/Button";
-import NavBar from "../../../design-library/NavBar/NavBar";
-import NavContainer from "../../../design-library/NavBar/NavContainer";
-import Typography from "../../../design-library/Typography/Typography";
-import { darkTheme, defaultTheme } from "../../../styles/Theme";
+import Button from "../../../design-library/components/Button/Button";
+import NavBar from "../../../design-library/components/NavBar/NavBar";
+import NavContainer from "../../../design-library/components/NavBar/NavContainer";
+import Typography from "../../../design-library/components/Typography/Typography";
+import { darkTheme, defaultTheme } from "../../../design-library/styles/Theme";
 
 interface HeaderProps {
   theme: DefaultTheme;
