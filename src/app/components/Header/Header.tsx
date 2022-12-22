@@ -15,7 +15,6 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
   const handleMenuClick: React.MouseEventHandler<HTMLButtonElement> = (
     event
   ) => {
@@ -38,8 +37,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
         <Button type="tertiary" size="md" onClick={handleMenuClick}>
           Menu
         </Button>
-        <Menu anchor={anchorEl} open={open} onClose={handleClose}>
+        <Menu anchor={anchorEl} open={!!anchorEl} onClose={handleClose}>
           <MenuItem>MenuItem 1</MenuItem>
+          <MenuItem>MenuItem 2</MenuItem>
         </Menu>
         <Button type="primary" size="md" onClick={handleOnClick}>
           Click me to switch theme

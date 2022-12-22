@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { ZIndex } from "../../constants/z-index.const";
+import useMenuContext from "../Menu/MenuContext.hook";
 
 interface OverlayProps {
   id: string;
@@ -18,22 +19,12 @@ const OverlayRoot = styled.div`
 `;
 
 const Overlay: React.FC<OverlayProps> = (props) => {
-  //   useEffect(() => {
-  //     return () => {
-  //       const element = document.getElementById("overlay");
-  //       element?.remove();
-  //     };
-  //   }, []);
-
-  useEffect(() => {
-    console.log("mounting");
-    return () => {
-      console.log("CLEANUP");
-    };
-  }, []);
+  const context = useMenuContext();
 
   return createPortal(
-    <OverlayRoot id={props.id}>{props.children}</OverlayRoot>,
+    <OverlayRoot onClick={context.handleClose} id={props.id}>
+      {props.children}
+    </OverlayRoot>,
     document.body
   );
 };

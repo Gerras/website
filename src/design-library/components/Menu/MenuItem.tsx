@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useMenuContext from "./MenuContext.hook";
 
 interface MenuItemProps {
   children?: React.ReactNode;
@@ -7,16 +8,12 @@ interface MenuItemProps {
 
 const MenuItemRoot = styled.li`
   cursor: pointer;
+  padding: 8px;
 `;
 
-// Needs to use context here.
-const handleOnClick = () => {
-  const element = document.getElementById("overlay");
-  element?.remove();
-};
-
 const MenuItem: React.FC<MenuItemProps> = (props) => {
-  return <MenuItemRoot onClick={handleOnClick}>{props.children}</MenuItemRoot>;
+  const { handleClose } = useMenuContext();
+  return <MenuItemRoot onClick={handleClose}>{props.children}</MenuItemRoot>;
 };
 
 export default MenuItem;
