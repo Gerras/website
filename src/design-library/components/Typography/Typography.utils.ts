@@ -4,16 +4,17 @@ export const translateStyles = (styles?: CSSObject) => {
   if (!styles) {
     return "";
   }
-  const stylesString = Object.entries(styles).reduce<string>(
-    (acc, [key, value]) => {
+
+  return Object.entries(styles)
+    .reduce<string>((acc, [key, value]) => {
       const regexResponse = key.split(/(?=[A-Z])/);
-      const lowerCase = regexResponse.map((value) => value.toLowerCase());
-      const cssValues = lowerCase.join("-");
-      const combineKeyValue = `${cssValues}: ${value}; `;
+      const lowerCaseList = regexResponse.map((regexValue) =>
+        regexValue.toLowerCase()
+      );
+      const cssKey = lowerCaseList.join("-");
+      const combineKeyValue = `${cssKey}: ${value}; `;
       acc += combineKeyValue;
       return acc;
-    },
-    ""
-  );
-  return stylesString.trimEnd();
+    }, "")
+    .trimEnd();
 };

@@ -1,7 +1,7 @@
 import styled, { CSSObject } from "styled-components";
 import React, { ReactNode } from "react";
 import { translateStyles } from "./Typography.utils";
-import type { FontSize } from "../../types/FontSize.type";
+import type { FontSize } from "../../types/font-size.type";
 
 type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 type Display = "block" | "flex";

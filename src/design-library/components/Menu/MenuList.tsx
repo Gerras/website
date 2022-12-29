@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 interface MenuListProps {
@@ -9,8 +9,8 @@ const MenuListRoot = styled.ul`
   list-style-type: none;
 `;
 
-const MenuList: React.FC<MenuListProps> = (props) => {
-  return <MenuListRoot>{props.children}</MenuListRoot>;
-};
+const MenuList = forwardRef<HTMLUListElement, MenuListProps>((props, ref) => {
+  return <MenuListRoot ref={ref}>{props.children}</MenuListRoot>;
+});
 
 export default MenuList;

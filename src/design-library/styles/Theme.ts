@@ -6,23 +6,26 @@ export const defaultTheme: DefaultTheme = {
   borderRadius: "4px",
   palette: {
     common: {
-      black: "#000",
+      black: "#000000",
       white: "#ffffff",
     },
     primary: {
       main: "#1976d2",
       rgbMain: hexToRgb("#1976d2"),
       contrastText: "#ffffff",
+      rgbContrastText: hexToRgb("#000000"),
     },
     secondary: {
       main: "#9c27b0",
       rgbMain: hexToRgb("#9c27b0"),
-      contrastText: "#000",
+      contrastText: "#000000",
+      rgbContrastText: hexToRgb("#000000"),
     },
     background: {
       main: "#ffffff",
       rgbMain: hexToRgb("#ffffff"),
-      contrastText: "#000",
+      contrastText: "#000000",
+      rgbContrastText: hexToRgb("#000000"),
     },
   },
 };
@@ -39,16 +42,19 @@ export const darkTheme: DefaultTheme = {
       main: "#90caf9",
       rgbMain: hexToRgb("#90caf9"),
       contrastText: "#000000",
+      rgbContrastText: hexToRgb("#000000"),
     },
     secondary: {
       main: "#ce93d8",
       rgbMain: hexToRgb("#ce93d8"),
       contrastText: "#ffffff",
+      rgbContrastText: hexToRgb("#ffffff"),
     },
     background: {
       main: "#222831",
       rgbMain: hexToRgb("#222831"),
       contrastText: "#ffffff",
+      rgbContrastText: hexToRgb("#ffffff"),
     },
   },
 };

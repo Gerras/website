@@ -1,9 +1,5 @@
-// This will be the menu component
-// First step will be to get a component that uses an anchor element and is shown/hidden depending on some internal state.
-// I think this would be a good candidate for a portal
-// We will also probably need an overlay for it so it can capture the click.
-
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import useOnScreen from "../../hooks/use-on-screen.hook";
 import Overlay from "../Overlay/Overlay";
 import { MenuContext } from "./MenuContext.hook";
 import MenuList from "./MenuList";
@@ -24,7 +20,11 @@ const Menu: React.FC<MenuProps> = (props) => {
     left: number;
   } | null>(null);
 
-  useLayoutEffect(() => {
+  const menuListRef = useRef<HTMLUListElement | null>(null);
+
+  const isIntersecting = useOnScreen(menuListRef);
+
+  useEffect(() => {
     const { anchor } = props;
     if (anchor) {
       const { bottom, left } = anchor.getBoundingClientRect();
@@ -35,7 +35,7 @@ const Menu: React.FC<MenuProps> = (props) => {
     };
   }, [props.anchor, props.open]);
 
-  const handleCloseAndCleanup = () => {
+  const handleClose = () => {
     props.onClose();
   };
 
@@ -44,14 +44,17 @@ const Menu: React.FC<MenuProps> = (props) => {
   }
 
   const contextValue: MenuContext = {
-    handleClose: handleCloseAndCleanup,
+    handleClose,
   };
+
+  console.log("ref", menuListRef);
+  console.log("MENULIST!!!", isIntersecting);
 
   return (
     <MenuContext.Provider value={contextValue}>
       <Overlay id={OVERLAY_ID}>
         <MenuRoot top={elementMeta.bottom} left={elementMeta.left}>
-          <MenuList>{props.children}</MenuList>
+          <MenuList ref={menuListRef}>{props.children}</MenuList>
         </MenuRoot>
       </Overlay>
     </MenuContext.Provider>

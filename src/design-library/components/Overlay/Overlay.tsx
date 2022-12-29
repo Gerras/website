@@ -19,10 +19,10 @@ const OverlayRoot = styled.div`
 `;
 
 const Overlay: React.FC<OverlayProps> = (props) => {
-  const context = useMenuContext();
+  const { handleClose } = useMenuContext();
 
   return createPortal(
-    <OverlayRoot onClick={context.handleClose} id={props.id}>
+    <OverlayRoot onClick={handleClose} id={props.id}>
       {props.children}
     </OverlayRoot>,
     document.body

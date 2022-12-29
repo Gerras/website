@@ -38,8 +38,14 @@ export const Header: React.FC<HeaderProps> = (props) => {
           Menu
         </Button>
         <Menu anchor={anchorEl} open={!!anchorEl} onClose={handleClose}>
+          {/* <MenuItem>
+            MenuItem 1 MenuItem 1 MenuItem 1 MenuItem 1 MenuItem 1 MenuItem 1
+            MenuItem 1 MenuItem 1 MenuItem 1 MenuItem 1 MenuItem 1 MenuItem
+            1MenuItem 1 MenuItem 1 MenuItem 1 MenuItem 1
+          </MenuItem> */}
           <MenuItem>MenuItem 1</MenuItem>
           <MenuItem>MenuItem 2</MenuItem>
+          <MenuItem>MenuItem 3</MenuItem>
         </Menu>
         <Button type="primary" size="md" onClick={handleOnClick}>
           Click me to switch theme
