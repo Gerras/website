@@ -2,7 +2,7 @@ import { DefaultTheme } from "styled-components";
 import { hexToRgb } from "../utils/hex-to-rgb.utils";
 
 export const defaultTheme: DefaultTheme = {
-  name: "default",
+  name: "Default",
   borderRadius: "4px",
   palette: {
     common: {
@@ -31,7 +31,7 @@ export const defaultTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
-  name: "dark",
+  name: "Dark",
   borderRadius: "4px",
   palette: {
     common: {
@@ -58,3 +58,6 @@ export const darkTheme: DefaultTheme = {
     },
   },
 };
+
+// This should eventually come from an API request so we can make more themes.
+export const THEMES = [darkTheme, defaultTheme];

@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <StrictMode>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header theme={theme} onButtonClick={setTheme} />
+        <Header theme={theme} setTheme={setTheme} />
         <Container maxWidth="md">
           <TypographyExample />
         </Container>

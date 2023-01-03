@@ -1,4 +1,9 @@
-import styled, { CSSObject } from "styled-components";
+import styled, {
+  CSSObject,
+  DefaultTheme,
+  AnyStyledComponent,
+  StyledComponent,
+} from "styled-components";
 import React, { ReactNode } from "react";
 import { translateStyles } from "./Typography.utils";
 import type { FontSize } from "../../types/font-size.type";
@@ -18,7 +23,7 @@ interface TypographyRootProps {
   display?: Display;
   gutterBottom: boolean;
   variant: Variant;
-  styles: string;
+  styles: CSSObject;
 }
 
 const fontSizeMap: Record<Variant, FontSize> = {
@@ -34,9 +39,6 @@ const fontSizeMap: Record<Variant, FontSize> = {
 interface RootStyled {
   styles: CSSObject;
 }
-const RootStyled = styled.div<RootStyled>`
-  ${(props) => props.styles}
-`;
 
 const TypographyRoot = styled.span<TypographyRootProps>`
   font-weight: 400;
@@ -47,22 +49,30 @@ const TypographyRoot = styled.span<TypographyRootProps>`
   ${(props) => props.styles}
 `;
 
+// This needs to be moved out.
+const RootStyled = (StyledComponent: AnyStyledComponent) => {
+  return styled(StyledComponent)`
+    ${(props) => translateStyles(props.directStyles)}
+  `;
+};
+
+const StyledTypoGraphyRoot = RootStyled(TypographyRoot);
+
 const Typography: React.FC<TypographyProps> = (props) => {
   const variant = props.variant ?? "p";
   const gutterBottom = !!props.gutterBottom;
   const display = props.display;
-  const directStyles = translateStyles(props.directStyles);
 
   return (
-    <TypographyRoot
+    <StyledTypoGraphyRoot
       as={variant}
       display={display}
       gutterBottom={gutterBottom}
       variant={variant}
-      styles={directStyles}
+      directStyles={props.directStyles}
     >
       {props.children}
-    </TypographyRoot>
+    </StyledTypoGraphyRoot>
   );
 };
 

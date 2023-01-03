@@ -7,11 +7,11 @@ interface ButtonProps {
   id?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   size?: ButtonSize;
-  type: ButtonType;
+  type?: ButtonType;
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const ButtonComponent = buttonComponentMap[props.type];
+  const ButtonComponent = buttonComponentMap[props.type ?? "primary"];
   const size = props.size ?? "md";
   return (
     <ButtonComponent id={props.id} onClick={props.onClick} size={size}>
