@@ -7,6 +7,7 @@ import styled, {
 import React, { ReactNode } from "react";
 import { translateStyles } from "./Typography.utils";
 import type { FontSize } from "../../types/font-size.type";
+import RootStyled from "../Root/Root";
 
 type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 type Display = "block" | "flex";
@@ -23,7 +24,7 @@ interface TypographyRootProps {
   display?: Display;
   gutterBottom: boolean;
   variant: Variant;
-  styles: CSSObject;
+  directStyles?: CSSObject;
 }
 
 const fontSizeMap: Record<Variant, FontSize> = {
@@ -36,25 +37,13 @@ const fontSizeMap: Record<Variant, FontSize> = {
   h1: "4rem",
 };
 
-interface RootStyled {
-  styles: CSSObject;
-}
-
 const TypographyRoot = styled.span<TypographyRootProps>`
   font-weight: 400;
   color: ${(props) => props.theme.palette.background.contrastText};
   display: ${(props) => props.display};
   font-size: ${(props) => fontSizeMap[props.variant]};
   margin-bottom: ${(props) => (props.gutterBottom ? "0.35em" : "0")};
-  ${(props) => props.styles}
 `;
-
-// This needs to be moved out.
-const RootStyled = (StyledComponent: AnyStyledComponent) => {
-  return styled(StyledComponent)`
-    ${(props) => translateStyles(props.directStyles)}
-  `;
-};
 
 const StyledTypoGraphyRoot = RootStyled(TypographyRoot);
 

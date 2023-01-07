@@ -22,6 +22,7 @@ const ThemeMenu: React.FC<ThemeMenuProps> = (props) => {
   const handleClose = () => setAnchorEl(null);
 
   const renderMenuItem = (theme: DefaultTheme) => {
+    const selected = theme.name === themeContext.name;
     const handleOnClick = () => {
       if (theme.name === themeContext.name) {
         return;
@@ -29,19 +30,28 @@ const ThemeMenu: React.FC<ThemeMenuProps> = (props) => {
       props.setTheme(theme);
     };
     return (
-      <MenuItem onClick={handleOnClick}>
+      <MenuItem
+        key={theme.name}
+        onClick={handleOnClick}
+        selected={selected}
+        directStyles={{ display: "flex", justifyContent: "space-between" }}
+      >
         {theme.name}
-        {/* @ts-ignore */}
-        <i className="fa-regular fa-square-check" />
+        {selected ? <i className="fa-regular fa-square-check" /> : null}
       </MenuItem>
     );
   };
 
   return (
     <>
-      <Button onClick={handleMenuClick}>Menu</Button>
+      <Button onClick={handleMenuClick}>Choose Theme</Button>
       <Menu anchor={anchorEl} open={!!anchorEl} onClose={handleClose}>
         {THEMES.map(renderMenuItem)}
+        <MenuItem>
+          DSJAKDJSKAJ DJSAKLDJSAKJDKLS ADJSKALDJKSLAJK DLSAJDLSAK JDSALKJDSALKJ
+          DSAJKDLSALKDSJAKL DSAKLJ DJKSLADJKLSAJKLDSAJKLDSAJKLDSAJKDSLA
+          DJSAKLDJKSLADSJKLA
+        </MenuItem>
       </Menu>
     </>
   );

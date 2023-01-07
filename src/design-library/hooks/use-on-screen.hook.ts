@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 // Source: https://stackoverflow.com/a/65008608
-const useOnScreen = <TRef extends HTMLElement>(
-  ref: React.MutableRefObject<TRef | null>
+const useOnScreen = <TElement extends HTMLElement>(
+  element: TElement | null
 ) => {
   const [isIntersecting, setIntersecting] = useState(false);
 
@@ -11,9 +11,10 @@ const useOnScreen = <TRef extends HTMLElement>(
   );
 
   useEffect(() => {
-    if (ref.current) {
+    console.log("HOOK REF", element);
+    if (element) {
       console.log("OBSERVING!!!!!!");
-      observer.observe(ref.current);
+      observer.observe(element);
     }
 
     // Remove the observer as soon as the component is unmounted
@@ -21,7 +22,7 @@ const useOnScreen = <TRef extends HTMLElement>(
       console.log("REMOVEDDDDDDDDDDDDDDDD");
       observer.disconnect();
     };
-  }, [ref]);
+  }, [element]);
 
   return isIntersecting;
 };

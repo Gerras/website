@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useOnScreen from "../../hooks/use-on-screen.hook";
 import Overlay from "../Overlay/Overlay";
 import { MenuContext } from "./MenuContext.hook";
@@ -18,17 +18,27 @@ const Menu: React.FC<MenuProps> = (props) => {
   const [elementMeta, setElementMeta] = useState<{
     bottom: number;
     left: number;
+    width: number;
   } | null>(null);
 
   const menuListRef = useRef<HTMLUListElement | null>(null);
+  const [element, setElement] = useState<HTMLUListElement | null>(null);
+  const menuListRefCallback = useCallback(
+    (instance: HTMLUListElement | null) => {
+      if (instance !== null) {
+        setElement(instance);
+      }
+    },
+    []
+  );
 
-  const isIntersecting = useOnScreen(menuListRef);
+  const onScreen = useOnScreen(element);
 
   useEffect(() => {
     const { anchor } = props;
     if (anchor) {
-      const { bottom, left } = anchor.getBoundingClientRect();
-      setElementMeta({ bottom, left });
+      const { bottom, left, width } = anchor.getBoundingClientRect();
+      setElementMeta({ bottom, left, width });
     }
     return () => {
       setElementMeta(null);
@@ -47,14 +57,15 @@ const Menu: React.FC<MenuProps> = (props) => {
     handleClose,
   };
 
-  console.log("ref", menuListRef);
-  console.log("MENULIST!!!", isIntersecting);
+  console.log("ELEMENT!!!!!!!!!!!!!!! onscreen", onScreen);
 
   return (
     <MenuContext.Provider value={contextValue}>
       <Overlay id={OVERLAY_ID}>
         <MenuRoot top={elementMeta.bottom} left={elementMeta.left}>
-          <MenuList ref={menuListRef}>{props.children}</MenuList>
+          <MenuList width={elementMeta.width} ref={menuListRefCallback}>
+            {props.children}
+          </MenuList>
         </MenuRoot>
       </Overlay>
     </MenuContext.Provider>
