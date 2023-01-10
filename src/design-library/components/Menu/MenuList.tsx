@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
-import useOnScreen from "../../hooks/use-on-screen.hook";
+import useElementIntersection from "../../hooks/use-on-screen.hook";
 
 interface MenuListProps {
   children?: React.ReactNode;

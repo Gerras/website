@@ -3,8 +3,9 @@ import styled from "styled-components";
 interface MenuRootProps {
   top: number;
   left: number;
+  // right: number;
 }
-
+/* right: ${(props) => `${props.right}px`}; */
 const MenuRoot = styled.div<MenuRootProps>`
   top: ${(props) => `${props.top}px`};
   left: ${(props) => `${props.left}px`};
