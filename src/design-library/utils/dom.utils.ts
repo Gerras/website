@@ -9,7 +9,7 @@ export const getViewPortWidth = () =>
   document.body.clientWidth;
 
 /**
- * Gets teh height of the viewport.
+ * Gets the height of the viewport.
  *
  * @returns Height of the viewport
  */

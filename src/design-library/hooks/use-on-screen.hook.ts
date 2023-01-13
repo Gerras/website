@@ -38,7 +38,9 @@ const useElementIntersection = <TElement extends HTMLElement>(
     }
     // Remove the observer as soon as the component is unmounted
     return () => {
-      observer.disconnect();
+      if (element) {
+        observer.unobserve(element);
+      }
     };
   }, [element]);
 

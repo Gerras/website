@@ -1,7 +1,5 @@
-import React, { forwardRef } from "react";
-import { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import useElementIntersection from "../../hooks/use-on-screen.hook";
 
 interface MenuListProps {
   children?: React.ReactNode;
@@ -17,12 +15,10 @@ const MenuListRoot = styled.ul<MenuListRootProps>`
   min-width: ${(props) => `${props.width}px`};
 `;
 
-const MenuList = forwardRef<HTMLUListElement, MenuListProps>((props, ref) => {
+const MenuList: React.FC<MenuListProps> = (props) => {
   return (
-    <MenuListRoot ref={ref} width={props.width ?? 100}>
-      {props.children}
-    </MenuListRoot>
+    <MenuListRoot width={props.width ?? 100}>{props.children}</MenuListRoot>
   );
-});
+};
 
 export default MenuList;

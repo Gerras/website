@@ -1,12 +1,19 @@
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
+import useElementIntersection from "../../hooks/use-on-screen.hook";
 
 interface MenuRootProps {
-  top: number;
   left: number;
-  // right: number;
+  top: number;
 }
-/* right: ${(props) => `${props.right}px`}; */
-const MenuRoot = styled.div<MenuRootProps>`
+
+interface MenuRootComponentProps {
+  children: React.ReactNode;
+  left: number;
+  top: number;
+}
+
+const MenuRootStyledComponent = styled.div<MenuRootProps>`
   top: ${(props) => `${props.top}px`};
   left: ${(props) => `${props.left}px`};
   position: absolute;
@@ -17,5 +24,45 @@ const MenuRoot = styled.div<MenuRootProps>`
   z-index: 1300;
   background-color: ${(props) => props.theme.palette.background.main};
 `;
+
+const MenuRoot: React.FC<MenuRootComponentProps> = (props) => {
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  const menuListRefCallback = useCallback((instance: HTMLDivElement | null) => {
+    if (instance !== null) {
+      setElement(instance);
+    }
+  }, []);
+  const [calculatedOffset, setCalculatedOffset] = useState<number | undefined>(
+    undefined
+  );
+
+  const onScreen = useElementIntersection(element);
+
+  useEffect(() => {
+    const { elementBounds, intersectionType, rootBounds } = onScreen;
+    if (intersectionType === "visible") {
+      setCalculatedOffset(props.left);
+    } else if (elementBounds !== null && rootBounds !== null) {
+      // This means that the right side of the element is out of screen
+      if (elementBounds.right > rootBounds.right) {
+        const rightDiff = elementBounds.right - rootBounds.right;
+        const adjustedLeft = elementBounds.left - rightDiff;
+        setCalculatedOffset(adjustedLeft - 10);
+      } else {
+        setCalculatedOffset(props.left);
+      }
+    }
+  }, [onScreen.intersectionType]);
+
+  return (
+    <MenuRootStyledComponent
+      ref={menuListRefCallback}
+      top={props.top}
+      left={calculatedOffset ?? props.left}
+    >
+      {props.children}
+    </MenuRootStyledComponent>
+  );
+};
 
 export default MenuRoot;
