@@ -1,5 +1,5 @@
-import styled, { CSSObject } from 'styled-components';
 import React, { ReactNode } from 'react';
+import styled, { CSSObject } from 'styled-components';
 import type { FontSize } from '../../types/font-size.type';
 import RootStyled from '../Root/Root';
 

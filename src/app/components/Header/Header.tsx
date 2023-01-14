@@ -1,9 +1,9 @@
-import React from 'react';
 import { DefaultTheme } from 'styled-components';
 import NavBar from '../../../design-library/components/NavBar/NavBar';
 import NavContainer from '../../../design-library/components/NavBar/NavContainer';
-import Typography from '../../../design-library/components/Typography/Typography';
+import React from 'react';
 import ThemeMenu from '../ThemeMenu/ThemeMenu';
+import Typography from '../../../design-library/components/Typography/Typography';
 
 interface HeaderProps {
   theme: DefaultTheme;

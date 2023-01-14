@@ -1,8 +1,8 @@
-import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
 import Button from '../../../design-library/components/Button/Button';
 import Menu from '../../../design-library/components/Menu/Menu';
 import MenuItem from '../../../design-library/components/Menu/MenuItem';
+import React from 'react';
 import { THEMES } from '../../../design-library/styles/Theme';
 
 interface ThemeMenuProps {

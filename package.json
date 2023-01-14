@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open",
     "test": "jest",
     "prettier": "prettier -c --write ./src",
-    "lint": "eslint --ext .tsx,.ts ./src"
+    "lint": "eslint --fix --ext .tsx,.ts ./src"
   },
   "keywords": [
     "personal, website"

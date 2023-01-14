@@ -1,7 +1,7 @@
 import React from 'react';
+import { ZIndex } from '../../constants/z-index.const';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
-import { ZIndex } from '../../constants/z-index.const';
 import useMenuContext from '../Menu/MenuContext.hook';
 
 interface OverlayProps {

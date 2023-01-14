@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useViewportWidth } from '../../hooks/use-viewport-width.hook';
-import Overlay from '../Overlay/Overlay';
 import { MenuContext } from './MenuContext.hook';
 import MenuList from './MenuList';
 import MenuRoot from './MenuRoot';
+import Overlay from '../Overlay/Overlay';
+import { useViewportWidth } from '../../hooks/use-viewport-width.hook';
 
 interface MenuProps {
   anchor: HTMLElement | null;

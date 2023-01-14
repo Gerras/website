@@ -1,5 +1,5 @@
-import { StyledComponent, DefaultTheme } from 'styled-components';
 import { ButtonSize, ButtonType } from './Button.types';
+import { DefaultTheme, StyledComponent } from 'styled-components';
 import { ButtonRootProps } from './ButtonTypes/ButtonRoot';
 import PrimaryButton from './ButtonTypes/PrimaryButton';
 import SecondaryButton from './ButtonTypes/SecondaryButton';

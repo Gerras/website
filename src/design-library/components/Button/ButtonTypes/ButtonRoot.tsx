@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import type { ButtonSize } from '../Button.types';
+import styled from 'styled-components';
 
 export interface ButtonRootProps {
   size: ButtonSize;

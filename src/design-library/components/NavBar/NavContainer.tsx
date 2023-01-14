@@ -1,5 +1,5 @@
-import React from 'react';
 import styled, { CSSObject } from 'styled-components';
+import React from 'react';
 import RootStyled from '../Root/Root';
 
 interface NavContainerRootInterface {

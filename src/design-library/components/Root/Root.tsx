@@ -1,6 +1,6 @@
 import styled, {
-  DefaultTheme,
   CSSObject,
+  DefaultTheme,
   StyledComponent
 } from 'styled-components';
 import { translateStyles } from '../Typography/Typography.utils';

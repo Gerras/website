@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ButtonSize, ButtonType } from './Button.types';
+import React from 'react';
 import { buttonComponentMap } from './Button.utils';
 
 interface ButtonProps {
