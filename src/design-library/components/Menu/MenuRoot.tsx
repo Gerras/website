@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
-import useElementIntersection from "../../hooks/use-on-screen.hook";
+import React, { useCallback, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import useElementIntersection from '../../hooks/use-on-screen.hook';
 
 interface MenuRootProps {
   left: number;
@@ -21,7 +21,6 @@ const MenuRootStyledComponent = styled.div<MenuRootProps>`
   border-radius: 4px;
   box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px,
     rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
-  z-index: 1300;
   background-color: ${(props) => props.theme.palette.background.main};
 `;
 
@@ -40,7 +39,7 @@ const MenuRoot: React.FC<MenuRootComponentProps> = (props) => {
 
   useEffect(() => {
     const { elementBounds, intersectionType, rootBounds } = onScreen;
-    if (intersectionType === "visible") {
+    if (intersectionType === 'visible') {
       setCalculatedOffset(props.left);
     } else if (elementBounds !== null && rootBounds !== null) {
       // This means that the right side of the element is out of screen

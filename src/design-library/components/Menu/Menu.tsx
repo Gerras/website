@@ -3,16 +3,16 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState,
-} from "react";
+  useState
+} from 'react';
 import useElementIntersection, {
-  ObservedElement,
-} from "../../hooks/use-on-screen.hook";
-import { useViewportWidth } from "../../hooks/use-viewport-width.hook";
-import Overlay from "../Overlay/Overlay";
-import { MenuContext } from "./MenuContext.hook";
-import MenuList from "./MenuList";
-import MenuRoot from "./MenuRoot";
+  ObservedElement
+} from '../../hooks/use-on-screen.hook';
+import { useViewportWidth } from '../../hooks/use-viewport-width.hook';
+import Overlay from '../Overlay/Overlay';
+import { MenuContext } from './MenuContext.hook';
+import MenuList from './MenuList';
+import MenuRoot from './MenuRoot';
 
 interface MenuProps {
   anchor: HTMLElement | null;
@@ -21,7 +21,7 @@ interface MenuProps {
   children?: React.ReactNode;
 }
 
-const OVERLAY_ID = "overlay";
+const OVERLAY_ID = 'overlay';
 
 const Menu: React.FC<MenuProps> = (props) => {
   const [elementMeta, setElementMeta] = useState<DOMRect | null>(null);
@@ -48,7 +48,7 @@ const Menu: React.FC<MenuProps> = (props) => {
   }
 
   const contextValue: MenuContext = {
-    handleClose,
+    handleClose
   };
 
   return (

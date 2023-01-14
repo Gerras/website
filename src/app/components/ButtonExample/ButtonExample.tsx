@@ -1,5 +1,5 @@
-import React from "react";
-import Button from "../../../design-library/components/Button/Button";
+import React from 'react';
+import Button from '../../../design-library/components/Button/Button';
 
 const ButtonExample: React.FC = () => {
   return (

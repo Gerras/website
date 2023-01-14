@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { paddingMap } from "../Button.utils";
-import ButtonRoot from "./ButtonRoot";
+import styled from 'styled-components';
+import { paddingMap } from '../Button.utils';
+import ButtonRoot from './ButtonRoot';
 
 const PrimaryButton = styled(ButtonRoot)`
   background-color: ${(props) => props.theme.palette.primary.main};
@@ -15,10 +15,10 @@ const PrimaryButton = styled(ButtonRoot)`
       theme: {
         palette: {
           primary: {
-            rgbMain: { r, g, b },
-          },
-        },
-      },
+            rgbMain: { r, g, b }
+          }
+        }
+      }
     }) => `rgba(${r}, ${g}, ${b}, 0.8)`};
   }
 `;

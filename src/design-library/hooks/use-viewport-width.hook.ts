@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { getViewPortWidth } from "../utils/dom.utils";
+import { useEffect, useState } from 'react';
+import { getViewPortWidth } from '../utils/dom.utils';
 
 // ADD CONFIG OBJECT THAT ALLOWS FOR SPECIFYING A TIMEOUT
 export const useViewportWidth = () => {
   // save current window width in the state object
-  let [width, setWidth] = useState(getViewPortWidth());
+  const [width, setWidth] = useState(getViewPortWidth());
 
   // in this case useEffect will execute only once because
   // it does not have any dependencies.
@@ -18,12 +18,12 @@ export const useViewportWidth = () => {
       timeoutId = window.setTimeout(() => setWidth(getViewPortWidth()), 150);
     };
     // set resize listener
-    window.addEventListener("resize", resizeListener);
+    window.addEventListener('resize', resizeListener);
 
     // clean up function
     return () => {
       // remove resize listener
-      window.removeEventListener("resize", resizeListener);
+      window.removeEventListener('resize', resizeListener);
       window.clearTimeout(timeoutId);
     };
   }, []);

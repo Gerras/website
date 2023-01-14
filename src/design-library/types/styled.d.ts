@@ -1,6 +1,6 @@
 // styled.d.ts
-import "styled-components";
-import { RGB } from "../utils/hex-to-rgb.utils";
+import 'styled-components';
+import { RGB } from '../utils/hex-to-rgb.utils';
 
 interface IPalette {
   main: string;
@@ -9,7 +9,7 @@ interface IPalette {
   rgbContrastText: RGB;
 }
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
     name: string;
     borderRadius: string;

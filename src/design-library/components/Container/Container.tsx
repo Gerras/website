@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-type MaxWidth = "xs" | "sm" | "md" | "lg" | "xl";
+type MaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface ContainerRootProps {
   maxWidth?: string;
@@ -18,10 +18,10 @@ interface ContainerProps {
 
 const maxWidthMap: Record<MaxWidth, string | null> = {
   xs: null,
-  sm: "600px",
-  md: "900px",
-  lg: "1200px",
-  xl: "1500px",
+  sm: '600px',
+  md: '900px',
+  lg: '1200px',
+  xl: '1500px'
 };
 
 const ContainerRoot = styled.div<ContainerRootProps>`
@@ -48,7 +48,7 @@ const ContainerBase = styled.div<ContainerBaseProps>`
 `;
 
 const Container: React.FC<ContainerProps> = (props) => {
-  const containerWidth = maxWidthMap[props.maxWidth] ?? "0";
+  const containerWidth = maxWidthMap[props.maxWidth] ?? '0';
   return (
     <ContainerBase containerWidth={containerWidth}>
       <ContainerRoot>{props.children}</ContainerRoot>

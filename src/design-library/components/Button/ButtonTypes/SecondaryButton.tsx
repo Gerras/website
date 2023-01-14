@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { paddingMap } from "../Button.utils";
-import ButtonRoot from "./ButtonRoot";
+import styled from 'styled-components';
+import { paddingMap } from '../Button.utils';
+import ButtonRoot from './ButtonRoot';
 
 const SecondaryButton = styled(ButtonRoot)`
   background-color: ${(props) => props.theme.palette.background.main};
@@ -13,10 +13,10 @@ const SecondaryButton = styled(ButtonRoot)`
     theme: {
       palette: {
         primary: {
-          rgbMain: { r, g, b },
-        },
-      },
-    },
+          rgbMain: { r, g, b }
+        }
+      }
+    }
   }) => `1px solid rgba(${r}, ${g}, ${b}, 0.5)`};
 
   :hover {
@@ -25,10 +25,10 @@ const SecondaryButton = styled(ButtonRoot)`
       theme: {
         palette: {
           primary: {
-            rgbMain: { r, g, b },
-          },
-        },
-      },
+            rgbMain: { r, g, b }
+          }
+        }
+      }
     }) => `rgba(${r}, ${g}, ${b}, 0.1)`};
   }
 `;

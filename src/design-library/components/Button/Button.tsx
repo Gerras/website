@@ -1,6 +1,6 @@
-import React from "react";
-import type { ButtonSize, ButtonType } from "./Button.types";
-import { buttonComponentMap } from "./Button.utils";
+import React from 'react';
+import type { ButtonSize, ButtonType } from './Button.types';
+import { buttonComponentMap } from './Button.utils';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -11,8 +11,8 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const ButtonComponent = buttonComponentMap[props.type ?? "primary"];
-  const size = props.size ?? "md";
+  const ButtonComponent = buttonComponentMap[props.type ?? 'primary'];
+  const size = props.size ?? 'md';
   return (
     <ButtonComponent id={props.id} onClick={props.onClick} size={size}>
       {props.children}

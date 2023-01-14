@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { CSSObject } from "styled-components";
-import RootStyled from "../Root/Root";
-import useMenuContext from "./MenuContext.hook";
+import React from 'react';
+import styled, { CSSObject } from 'styled-components';
+import RootStyled from '../Root/Root';
+import useMenuContext from './MenuContext.hook';
 
 interface MenuItemProps {
   children?: React.ReactNode;
@@ -23,7 +23,7 @@ const MenuItemRoot = styled.li<MenuItemRootProps>`
   background-color: ${(props) =>
     props.selected
       ? `rgba(${props.theme.palette.background.rgbContrastText.r}, ${props.theme.palette.background.rgbContrastText.g}, ${props.theme.palette.background.rgbContrastText.b}, 0.1)`
-      : ""};
+      : ''};
 
   :first-child {
     border-radius: 4px 4px 0 0;
@@ -38,10 +38,10 @@ const MenuItemRoot = styled.li<MenuItemRootProps>`
       theme: {
         palette: {
           background: {
-            rgbContrastText: { r, g, b },
-          },
-        },
-      },
+            rgbContrastText: { r, g, b }
+          }
+        }
+      }
     }) => `rgba(${r}, ${g}, ${b}, 0.12)`};
   }
 `;

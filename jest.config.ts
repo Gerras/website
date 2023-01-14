@@ -1,10 +1,10 @@
-import type { JestConfigWithTsJest } from "ts-jest";
+import type { JestConfigWithTsJest } from 'ts-jest';
 
 const config: JestConfigWithTsJest = {
-  rootDir: "src",
+  rootDir: 'src',
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", {}],
-  },
+    '^.+\\.tsx?$': ['ts-jest', {}]
+  }
 };
 
 export default config;

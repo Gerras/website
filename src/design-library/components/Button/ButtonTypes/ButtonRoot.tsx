@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import type { ButtonSize } from "../Button.types";
+import styled from 'styled-components';
+import type { ButtonSize } from '../Button.types';
 
 export interface ButtonRootProps {
   size: ButtonSize;
 }
 
 const fontSizeMap: Record<ButtonSize, string> = {
-  sm: "0.8rem",
-  md: "1rem",
-  lg: "1.2rem",
+  sm: '0.8rem',
+  md: '1rem',
+  lg: '1.2rem'
 };
 
 const ButtonRoot = styled.button<ButtonRootProps>`

@@ -1,8 +1,8 @@
-import { CSSObject } from "styled-components";
+import { CSSObject } from 'styled-components';
 
 export const translateStyles = (styles?: CSSObject) => {
   if (!styles) {
-    return "";
+    return '';
   }
 
   return Object.entries(styles)
@@ -11,10 +11,10 @@ export const translateStyles = (styles?: CSSObject) => {
       const lowerCaseList = regexResponse.map((regexValue) =>
         regexValue.toLowerCase()
       );
-      const cssKey = lowerCaseList.join("-");
+      const cssKey = lowerCaseList.join('-');
       const combineKeyValue = `${cssKey}: ${value}; `;
       acc += combineKeyValue;
       return acc;
-    }, "")
+    }, '')
     .trimEnd();
 };

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { paddingMap } from "../Button.utils";
-import ButtonRoot from "./ButtonRoot";
+import styled from 'styled-components';
+import { paddingMap } from '../Button.utils';
+import ButtonRoot from './ButtonRoot';
 
 const TertiaryButton = styled(ButtonRoot)`
   background-color: ${(props) => props.theme.palette.background.main};
@@ -15,10 +15,10 @@ const TertiaryButton = styled(ButtonRoot)`
       theme: {
         palette: {
           primary: {
-            rgbMain: { r, g, b },
-          },
-        },
-      },
+            rgbMain: { r, g, b }
+          }
+        }
+      }
     }) => `rgba(${r}, ${g}, ${b}, 0.1)`};
   }
 `;

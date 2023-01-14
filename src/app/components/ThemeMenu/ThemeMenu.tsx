@@ -1,9 +1,9 @@
-import React from "react";
-import { DefaultTheme, useTheme } from "styled-components";
-import Button from "../../../design-library/components/Button/Button";
-import Menu from "../../../design-library/components/Menu/Menu";
-import MenuItem from "../../../design-library/components/Menu/MenuItem";
-import { THEMES } from "../../../design-library/styles/Theme";
+import React from 'react';
+import { DefaultTheme, useTheme } from 'styled-components';
+import Button from '../../../design-library/components/Button/Button';
+import Menu from '../../../design-library/components/Menu/Menu';
+import MenuItem from '../../../design-library/components/Menu/MenuItem';
+import { THEMES } from '../../../design-library/styles/Theme';
 
 interface ThemeMenuProps {
   setTheme: (theme: DefaultTheme) => void;
@@ -34,7 +34,7 @@ const ThemeMenu: React.FC<ThemeMenuProps> = (props) => {
         key={theme.name}
         onClick={handleOnClick}
         selected={selected}
-        directStyles={{ display: "flex", justifyContent: "space-between" }}
+        directStyles={{ display: 'flex', justifyContent: 'space-between' }}
       >
         {theme.name}
         {selected ? <i className="fa-regular fa-square-check" /> : null}
@@ -47,11 +47,6 @@ const ThemeMenu: React.FC<ThemeMenuProps> = (props) => {
       <Button onClick={handleMenuClick}>Choose Theme</Button>
       <Menu anchor={anchorEl} open={!!anchorEl} onClose={handleClose}>
         {THEMES.map(renderMenuItem)}
-        <MenuItem>
-          DSJAKDJSKAJ DJSAKLDJSAKJDKLS ADJSKALDJKSLAJK DLSAJDLSAK JDSALKJDSALKJ
-          DSAJKDLSALKDSJAKL DSAKLJ DJKSLADJKLSAJKLDSAJKLDSAJKLDSAJKDSLA
-          DJSAKLDJKSLADSJKLA
-        </MenuItem>
       </Menu>
     </>
   );

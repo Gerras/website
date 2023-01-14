@@ -1,5 +1,5 @@
-import React from "react";
-import Typography from "../../../design-library/components/Typography/Typography";
+import React from 'react';
+import Typography from '../../../design-library/components/Typography/Typography';
 
 export const TypographyExample: React.FC = () => {
   return (

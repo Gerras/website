@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export type ObservedElement = Readonly<{
   intersectionType: IntersectionType | null;
   rootBounds: DOMRectReadOnly | null;
   elementBounds: DOMRectReadOnly | null;
 }>;
-type IntersectionType = "hidden" | "partial" | "visible";
+type IntersectionType = 'hidden' | 'partial' | 'visible';
 
 const useElementIntersection = <TElement extends HTMLElement>(
   element: TElement | null
@@ -22,13 +22,13 @@ const useElementIntersection = <TElement extends HTMLElement>(
     setRootBounds(entry.rootBounds);
     setElementBounds(entry.boundingClientRect);
     if (entry.intersectionRatio === 0) {
-      setIntersectionType("hidden");
+      setIntersectionType('hidden');
     }
     if (entry.intersectionRatio < 1) {
-      setIntersectionType("partial");
+      setIntersectionType('partial');
     }
     if (entry.intersectionRatio === 1) {
-      setIntersectionType("visible");
+      setIntersectionType('visible');
     }
   });
 
