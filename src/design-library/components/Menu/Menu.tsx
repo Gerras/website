@@ -1,13 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react';
-import useElementIntersection, {
-  ObservedElement
-} from '../../hooks/use-on-screen.hook';
+import React, { useEffect, useState } from 'react';
 import { useViewportWidth } from '../../hooks/use-viewport-width.hook';
 import Overlay from '../Overlay/Overlay';
 import { MenuContext } from './MenuContext.hook';
