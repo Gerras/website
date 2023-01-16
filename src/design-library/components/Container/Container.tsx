@@ -1,19 +1,22 @@
+import styled, { CSSObject } from 'styled-components';
 import React from 'react';
-import styled from 'styled-components';
+import RootStyled from '../Root/Root';
 
 type MaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+interface ContainerBaseProps {
+  containerWidth: string;
+  directStyles?: CSSObject;
+}
 
 interface ContainerRootProps {
   maxWidth?: string;
 }
 
-interface ContainerBaseProps {
-  containerWidth: string;
-}
-
 interface ContainerProps {
   children: React.ReactNode;
   maxWidth: MaxWidth;
+  directStyles?: CSSObject;
 }
 
 const maxWidthMap: Record<MaxWidth, string | null> = {
@@ -24,11 +27,6 @@ const maxWidthMap: Record<MaxWidth, string | null> = {
   xl: '1500px'
 };
 
-const ContainerRoot = styled.div<ContainerRootProps>`
-  background-color: ${(props) => props.theme.palette.background.main};
-  height: 100vh;
-`;
-
 const ContainerBase = styled.div<ContainerBaseProps>`
   box-sizing: border-box;
   display: block;
@@ -37,6 +35,7 @@ const ContainerBase = styled.div<ContainerBaseProps>`
   padding-left: 16px;
   padding-right: 16px;
   width: 100%;
+  height: 100vh;
 
   @media (min-width: 600px) {
     padding-left: 24px;
@@ -47,12 +46,21 @@ const ContainerBase = styled.div<ContainerBaseProps>`
   }
 `;
 
+const StyledContainerBase = RootStyled(ContainerBase);
+
+const ContainerRoot = styled.div<ContainerRootProps>`
+  background-color: ${(props) => props.theme.palette.background.main};
+`;
+
 const Container: React.FC<ContainerProps> = (props) => {
   const containerWidth = maxWidthMap[props.maxWidth] ?? '0';
   return (
-    <ContainerBase containerWidth={containerWidth}>
+    <StyledContainerBase
+      containerWidth={containerWidth}
+      directStyles={props.directStyles}
+    >
       <ContainerRoot>{props.children}</ContainerRoot>
-    </ContainerBase>
+    </StyledContainerBase>
   );
 };
 

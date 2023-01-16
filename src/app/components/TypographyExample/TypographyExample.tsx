@@ -4,8 +4,8 @@ import Typography from '../../../design-library/components/Typography/Typography
 export const TypographyExample: React.FC = () => {
   return (
     <>
-      <Typography variant="p" gutterBottom>
-        Hi this is kevins personal website
+      <Typography variant="h1" gutterBottom>
+        Typography
       </Typography>
       <Typography variant="h1" gutterBottom>
         h1. Header type 1

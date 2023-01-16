@@ -1,9 +1,13 @@
 import Button from '../../../design-library/components/Button/Button';
 import React from 'react';
+import Typography from '../../../design-library/components/Typography/Typography';
 
 const ButtonExample: React.FC = () => {
   return (
     <>
+      <Typography variant="h1" gutterBottom>
+        Buttons
+      </Typography>
       <div>
         <Button type="primary" size="sm">
           small
