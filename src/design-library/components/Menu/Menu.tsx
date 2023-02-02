@@ -45,7 +45,11 @@ const Menu: React.FC<MenuProps> = (props) => {
   return (
     <MenuContext.Provider value={contextValue}>
       <Overlay id={OVERLAY_ID}>
-        <MenuRoot top={elementMeta.bottom} left={elementMeta.left}>
+        <MenuRoot
+          top={elementMeta.bottom}
+          left={elementMeta.left}
+          parentDomRect={elementMeta}
+        >
           <MenuList width={elementMeta.width}>{props.children}</MenuList>
         </MenuRoot>
       </Overlay>

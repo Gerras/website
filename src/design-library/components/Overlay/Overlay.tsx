@@ -16,6 +16,7 @@ const OverlayRoot = styled.div`
   bottom: 0;
   left: 0;
   z-index: ${() => ZIndex.overlay};
+  overflow-y: hidden;
 `;
 
 const Overlay: React.FC<OverlayProps> = (props) => {
