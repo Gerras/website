@@ -1,16 +1,12 @@
-import { DefaultTheme } from 'styled-components';
 import NavBar from '../../../design-library/components/NavBar/NavBar';
 import NavContainer from '../../../design-library/components/NavBar/NavContainer';
 import React from 'react';
 import ThemeMenu from '../ThemeMenu/ThemeMenu';
 import Typography from '../../../design-library/components/Typography/Typography';
+import { useThemeContext } from '../../hooks/use-theme-context';
 
-interface HeaderProps {
-  theme: DefaultTheme;
-  setTheme: (theme: DefaultTheme) => void;
-}
-
-export const Header: React.FC<HeaderProps> = (props) => {
+export const Header: React.FC = () => {
+  const { changeTheme } = useThemeContext();
   return (
     <NavBar sticky backgroundBlur>
       <NavContainer
@@ -20,8 +16,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
           justifyContent: 'space-evenly'
         }}
       >
+        {/* TODO: Make this a link, create a component for that */}
         <Typography directStyles={{ flex: 1 }}>Kevin Brauen</Typography>
-        <ThemeMenu setTheme={props.setTheme} />
+        <ThemeMenu setTheme={changeTheme} />
       </NavContainer>
     </NavBar>
   );

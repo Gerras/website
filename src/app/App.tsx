@@ -1,34 +1,46 @@
-import React, { StrictMode, useState } from 'react';
-import ButtonExample from './components/Examples/ButtonExample';
-import Container from '../design-library/components/Container/Container';
+import React, { StrictMode, useMemo, useState } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Components from './routes/Components';
 import GlobalStyle from '../design-library/styles/GlobalStyle';
-import { Header } from './components/Header/Header';
-import MenuExample from './components/Examples/MenuExample';
+import Home from './routes/Home';
+import NotFound from './routes/NotFound';
+import { RootLayout } from './components/RootLayout/RootLayout';
+import { ThemeContext } from './hooks/use-theme-context';
 import { ThemeProvider } from 'styled-components';
-import TransitionExample from './components/Examples/TransitionExample';
-import { TypographyExample } from './components/Examples/TypographyExample';
 import { defaultTheme } from '../design-library/styles/Theme';
+
+const router = createBrowserRouter([
+  {
+    element: <RootLayout />,
+    errorElement: <NotFound />,
+    children: [
+      { path: '/', element: <Home /> },
+      {
+        path: 'components',
+        element: <Components />
+      }
+    ]
+  }
+]);
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState(defaultTheme);
 
+  const contextValue: ThemeContext = useMemo(
+    () => ({
+      changeTheme: (theme) => setTheme(theme),
+      theme
+    }),
+    [theme]
+  );
+
   return (
     <StrictMode>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header theme={theme} setTheme={setTheme} />
-        <Container maxWidth="md" directStyles={{ marginBottom: '1rem' }}>
-          <TypographyExample />
-        </Container>
-        <Container maxWidth="md" directStyles={{ height: '100%' }}>
-          <ButtonExample />
-        </Container>
-        <Container maxWidth="md" directStyles={{ height: '100%' }}>
-          <MenuExample />
-        </Container>
-        <Container maxWidth="md">
-          <TransitionExample />
-        </Container>
+        <ThemeContext.Provider value={contextValue}>
+          <GlobalStyle />
+          <RouterProvider router={router} />
+        </ThemeContext.Provider>
       </ThemeProvider>
     </StrictMode>
   );

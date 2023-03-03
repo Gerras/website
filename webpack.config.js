@@ -14,6 +14,12 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    devMiddleware: {
+      publicPath: '/'
+    },
+    historyApiFallback: true
+  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },

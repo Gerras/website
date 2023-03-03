@@ -35,7 +35,6 @@ const ContainerBase = styled.div<ContainerBaseProps>`
   padding-left: 16px;
   padding-right: 16px;
   width: 100%;
-  height: 100vh;
 
   @media (min-width: 600px) {
     padding-left: 24px;

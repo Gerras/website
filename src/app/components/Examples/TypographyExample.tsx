@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '../../../design-library/components/Typography/Typography';
 
-export const TypographyExample: React.FC = () => {
+const TypographyExample: React.FC = () => {
   return (
     <>
       <Typography variant="h1" gutterBottom>
@@ -71,3 +71,5 @@ export const TypographyExample: React.FC = () => {
     </>
   );
 };
+
+export default TypographyExample;
