@@ -10,7 +10,7 @@ const ButtonExample: React.FC = () => {
       </Typography>
       <div>
         <Button type="primary" size="sm">
-          small
+          Small
         </Button>
         <Button type="primary" size="md">
           Medium
@@ -21,7 +21,7 @@ const ButtonExample: React.FC = () => {
       </div>
       <div>
         <Button type="secondary" size="sm">
-          small
+          Small
         </Button>
         <Button type="secondary" size="md">
           Medium
@@ -39,6 +39,11 @@ const ButtonExample: React.FC = () => {
         </Button>
         <Button type="tertiary" size="lg">
           Large
+        </Button>
+      </div>
+      <div>
+        <Button href="/" size="sm">
+          Link
         </Button>
       </div>
     </>

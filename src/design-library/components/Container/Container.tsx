@@ -7,6 +7,7 @@ type MaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 interface ContainerBaseProps {
   containerWidth: string;
   directStyles?: CSSObject;
+  gutterBottom: boolean;
 }
 
 interface ContainerRootProps {
@@ -17,6 +18,7 @@ interface ContainerProps {
   children: React.ReactNode;
   maxWidth: MaxWidth;
   directStyles?: CSSObject;
+  gutterBottom?: boolean;
 }
 
 const maxWidthMap: Record<MaxWidth, string | null> = {
@@ -34,6 +36,7 @@ const ContainerBase = styled.div<ContainerBaseProps>`
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: ${(props) => (props.gutterBottom ? '1rem' : '')};
   width: 100%;
 
   @media (min-width: 600px) {
@@ -53,10 +56,12 @@ const ContainerRoot = styled.div<ContainerRootProps>`
 
 const Container: React.FC<ContainerProps> = (props) => {
   const containerWidth = maxWidthMap[props.maxWidth] ?? '0';
+  const gutterBottom = props.gutterBottom ?? false;
   return (
     <StyledContainerBase
       containerWidth={containerWidth}
       directStyles={props.directStyles}
+      gutterBottom={gutterBottom}
     >
       <ContainerRoot>{props.children}</ContainerRoot>
     </StyledContainerBase>
