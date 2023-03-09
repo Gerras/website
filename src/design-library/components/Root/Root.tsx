@@ -3,7 +3,7 @@ import styled, {
   DefaultTheme,
   StyledComponent
 } from 'styled-components';
-import { translateStyles } from '../Typography/Typography.utils';
+import { translateStyles } from './Root.utils';
 
 /**
  * A specialized styled component that takes a "directStyles" prop that allows for overriding the components default styling behavior.

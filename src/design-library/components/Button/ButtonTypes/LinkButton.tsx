@@ -1,8 +1,9 @@
+import styled, { CSSObject } from 'styled-components';
 import ButtonRoot from './ButtonRoot';
 import { ButtonSize } from '../Button.types';
 import React from 'react';
+import RootStyled from '../../Root/Root';
 import { paddingMap } from '../Button.utils';
-import styled from 'styled-components';
 
 interface LinkButtonProps {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ interface LinkButtonProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   href: string;
   size: ButtonSize;
+  directStyles?: CSSObject;
 }
 
 const LinkButtonRoot = styled(ButtonRoot)`
@@ -36,17 +38,20 @@ const LinkButtonRoot = styled(ButtonRoot)`
   }
 `;
 
+const StyledLinkButtonRoot = RootStyled(LinkButtonRoot);
+
 const LinkButton: React.FC<LinkButtonProps> = (props) => {
   return (
-    <LinkButtonRoot
+    <StyledLinkButtonRoot
       as="a"
       id={props.id}
       size={props.size}
       href={props.href}
       onClick={props.onClick}
+      directStyles={props.directStyles}
     >
       {props.children}
-    </LinkButtonRoot>
+    </StyledLinkButtonRoot>
   );
 };
 

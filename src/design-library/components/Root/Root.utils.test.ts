@@ -1,5 +1,5 @@
 import { CSSObject } from 'styled-components';
-import { translateStyles } from './Typography.utils';
+import { translateStyles } from './Root.utils';
 
 describe('Typopgrahy utils', () => {
   test('Should return converted CSSObject to string when css properties are simple', () => {
