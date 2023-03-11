@@ -5,15 +5,15 @@ import Typography from '../../design-library/components/Typography/Typography';
 
 const Home: React.FC = () => {
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="sm">
       <Typography variant="h3" gutterBottom>
         Hi!
       </Typography>
-      <Typography variant="p" gutterBottom>
+      <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         I'm Kevin Brauen and this is my personal website. I am a software
         engineer that loves React!
       </Typography>
-      <Typography variant="p" gutterBottom>
+      <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         You might be asking why I created this site? Well, I think it makes
         sense for a Software Engineer to have a personal website, a place where
         they can mess around with code, maybe blog about some ineresting ideas
@@ -29,18 +29,18 @@ const Home: React.FC = () => {
         </Link>
         .
       </Typography>
-      <Typography variant="p" gutterBottom>
+      <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         I want to start by creating well designed, well structured components
         that I could reuse as my personal website grows, so I created a simple
         component library, which you can see my progress so far&nbsp;
         <Link to="/components">here</Link>.
       </Typography>
-      <Typography variant="p" gutterBottom>
+      <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         Once I am happy with where the component library is I will probably work
         on a simple blog and I will detail how I created that in my first blog
         post!
       </Typography>
-      <Typography variant="p">
+      <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         If you want to check out my career or public work you can find me
         on&nbsp;
         <Link to="https://www.linkedin.com/in/kevin-brauen-86121378/">
