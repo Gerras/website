@@ -1,43 +1,16 @@
+import { Display, Variant } from './Typography.types';
 import React, { ReactNode } from 'react';
-import styled, { CSSObject } from 'styled-components';
-import type { FontSize } from '../../types/font-size.type';
+import { CSSObject } from 'styled-components';
 import RootStyled from '../Root/Root';
+import TypographyRoot from './TypographyRoot';
 
-type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-type Display = 'block' | 'flex';
-
-interface TypographyProps {
+export interface TypographyProps {
   children?: ReactNode;
   display?: Display;
   gutterBottom?: boolean;
   variant?: Variant;
   directStyles?: CSSObject;
 }
-
-interface TypographyRootProps {
-  display?: Display;
-  gutterBottom: boolean;
-  variant: Variant;
-  directStyles?: CSSObject;
-}
-
-const fontSizeMap: Record<Variant, FontSize> = {
-  p: '1rem',
-  h6: '1.5rem',
-  h5: '2rem',
-  h4: '2.5rem',
-  h3: '3rem',
-  h2: '3.5rem',
-  h1: '4rem'
-};
-
-const TypographyRoot = styled.span<TypographyRootProps>`
-  font-weight: 400;
-  color: ${(props) => props.theme.palette.background.contrastText};
-  display: ${(props) => props.display};
-  font-size: ${(props) => fontSizeMap[props.variant]};
-  margin-bottom: ${(props) => (props.gutterBottom ? '0.35em' : '0')};
-`;
 
 const StyledTypoGraphyRoot = RootStyled(TypographyRoot);
 

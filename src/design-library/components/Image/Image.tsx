@@ -6,13 +6,18 @@ interface ImageBaseProps {
   directStyles?: CSSObject;
 }
 
+interface ImageBaseContainerProps {
+  directStyles?: CSSObject;
+}
+
 interface ImageProps {
+  containerStyles?: CSSObject;
   directStyles?: CSSObject;
   src?: string;
   alt?: string;
 }
 
-const ImageBaseContainer = styled.div`
+const ImageBaseContainer = styled.div<ImageBaseContainerProps>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -24,11 +29,11 @@ const ImageBase = styled.img<ImageBaseProps>`
   position: relative;
   width: 100%;
   height: 100%;
-  object-fit: fit;
-  animation: materialize 3000ms 1 cubic-bezier(0.7, 0, 0.6, 1); // Make this more configurable
-  @keyframes materialize {
+  object-fit: cover;
+  animation: colorize 1000ms 1 cubic-bezier(0.7, 0, 0.6, 1); // Make this more configurable
+  @keyframes colorize {
     0% {
-      filter: saturate(20%) contrast(50%) brightness(120%);
+      filter: saturate(1%) contrast(20%) brightness(120%);
     }
     75% {
       filter: saturate(60%) contrast(100%) brightness(100%);
@@ -39,11 +44,12 @@ const ImageBase = styled.img<ImageBaseProps>`
   }
 `;
 
+const StyledImageBaseContainer = RootStyled(ImageBaseContainer);
 const StyledImageBase = RootStyled(ImageBase);
 
 const Image: React.FC<ImageProps> = (props) => {
   return (
-    <ImageBaseContainer>
+    <StyledImageBaseContainer directStyles={props.containerStyles}>
       <StyledImageBase
         src={props.src}
         alt={props.alt}
@@ -51,7 +57,7 @@ const Image: React.FC<ImageProps> = (props) => {
       >
         {/* Add loader when ready. */}
       </StyledImageBase>
-    </ImageBaseContainer>
+    </StyledImageBaseContainer>
   );
 };
 

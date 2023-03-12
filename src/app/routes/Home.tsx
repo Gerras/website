@@ -1,14 +1,20 @@
 import Container from '../../design-library/components/Container/Container';
-import { Link } from 'react-router-dom';
+import Link from '../../design-library/components/Link/Link';
 import React from 'react';
 import Typography from '../../design-library/components/Typography/Typography';
 
 const Home: React.FC = () => {
   return (
     <Container maxWidth="sm">
-      <Typography variant="h3" gutterBottom>
-        Hi!
-      </Typography>
+      <div>
+        <Typography
+          variant="h3"
+          gutterBottom
+          directStyles={{ display: 'flex' }}
+        >
+          Hi!
+        </Typography>
+      </div>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         I'm Kevin Brauen and this is my personal website. I am a software
         engineer that loves React!
@@ -24,16 +30,13 @@ const Home: React.FC = () => {
         Chakra, only stuff I could make! It is also a bit about showcasing my
         skills, and to that extent you'll be able to see everything I've built
         for this website in my personal github&nbsp;
-        <Link to="https://github.com/Gerras/website/tree/main/src">
-          repository
-        </Link>
-        .
+        <Link href="https://github.com/Gerras/website">repository</Link>.
       </Typography>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         I want to start by creating well designed, well structured components
         that I could reuse as my personal website grows, so I created a simple
         component library, which you can see my progress so far&nbsp;
-        <Link to="/components">here</Link>.
+        <Link href="/components">here</Link>.
       </Typography>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         Once I am happy with where the component library is I will probably work
@@ -43,10 +46,10 @@ const Home: React.FC = () => {
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         If you want to check out my career or public work you can find me
         on&nbsp;
-        <Link to="https://www.linkedin.com/in/kevin-brauen-86121378/">
+        <Link href="https://www.linkedin.com/in/kevin-brauen-86121378/">
           linkedin
         </Link>
-        &nbsp; or <Link to="https://github.com/Gerras/">github</Link>.
+        &nbsp; or <Link href="https://github.com/Gerras/">github</Link>.
       </Typography>
     </Container>
   );
