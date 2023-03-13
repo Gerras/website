@@ -1,5 +1,5 @@
-import Button from '../../../design-library/components/Button/Button';
 import Image from '../../../design-library/components/Image/Image';
+import Link from '../../../design-library/components/Link/Link';
 import NavBar from '../../../design-library/components/NavBar/NavBar';
 import NavContainer from '../../../design-library/components/NavBar/NavContainer';
 import ProfileImg from '../../assets/profile-512-512.jpg';
@@ -16,7 +16,7 @@ const ButtonContainer = styled.div`
 `;
 
 export const Header: React.FC = () => {
-  const { changeTheme } = useThemeContext();
+  const { changeTheme, theme } = useThemeContext();
   return (
     <NavBar sticky backgroundBlur>
       <NavContainer
@@ -39,7 +39,15 @@ export const Header: React.FC = () => {
               borderRadius: '50%'
             }}
           />
-          <Button href="/">Kevin Brauen</Button>
+          <Link
+            href="/"
+            directStyles={{
+              color: theme.palette.secondary.main,
+              textDecoration: 'none'
+            }}
+          >
+            Kevin Brauen
+          </Link>
         </ButtonContainer>
         <ThemeMenu setTheme={changeTheme} />
       </NavContainer>

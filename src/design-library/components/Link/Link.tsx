@@ -1,4 +1,5 @@
 import React from 'react';
+import RootStyled from '../Root/Root';
 import { TypographyProps } from '../Typography/Typography';
 import TypographyRoot from '../Typography/TypographyRoot';
 import styled from 'styled-components';
@@ -13,7 +14,7 @@ const LinkBase = styled(TypographyRoot)`
   cursor: pointer;
 `;
 
-// const StyledTypoGraphyRoot = RootStyled(TypographyRoot);
+const StyledLinkBase = RootStyled(LinkBase);
 
 const Link: React.FC<LinkProps> = (props) => {
   const variant = props.variant ?? 'p';
@@ -21,7 +22,7 @@ const Link: React.FC<LinkProps> = (props) => {
   const display = props.display;
 
   return (
-    <LinkBase
+    <StyledLinkBase
       as="a"
       display={display}
       gutterBottom={gutterBottom}
@@ -30,7 +31,7 @@ const Link: React.FC<LinkProps> = (props) => {
       href={props.href}
     >
       {props.children}
-    </LinkBase>
+    </StyledLinkBase>
   );
 };
 

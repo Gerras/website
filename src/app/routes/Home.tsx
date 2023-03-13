@@ -1,3 +1,4 @@
+import Code, { InlineCode } from '../../design-library/components/Code/Code';
 import Container from '../../design-library/components/Container/Container';
 import Link from '../../design-library/components/Link/Link';
 import React from 'react';
@@ -44,13 +45,27 @@ const Home: React.FC = () => {
         post!
       </Typography>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
-        If you want to check out my career or public work you can find me
-        on&nbsp;
+        If you want to check out my career or {/* TODO: REMOVE THIS */}
+        <InlineCode>public work</InlineCode> you can find me on&nbsp;
         <Link href="https://www.linkedin.com/in/kevin-brauen-86121378/">
           linkedin
         </Link>
         &nbsp; or <Link href="https://github.com/Gerras/">github</Link>.
       </Typography>
+      {/* TODO: REMOVE THIS */}
+      <Code>
+        {`
+  const ButtonExample: React.FC = () => { 
+    return (
+      <>
+        <Typography variant="h1" gutterBottom>
+          Buttons
+        </Typography>
+      </>
+      );
+    }
+              `}
+      </Code>
     </Container>
   );
 };
