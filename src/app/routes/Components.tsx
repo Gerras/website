@@ -1,5 +1,6 @@
 import ButtonExample from '../components/Examples/ButtonExample';
 import Container from '../../design-library/components/Container/Container';
+import MarkdownExample from '../components/Examples/MarkdownExample';
 import MenuExample from '../components/Examples/MenuExample';
 import React from 'react';
 import TransitionExample from '../components/Examples/TransitionExample';
@@ -30,6 +31,9 @@ const Components: React.FC = () => {
       </Container>
       <Container maxWidth="md" gutterBottom>
         <TransitionExample />
+      </Container>
+      <Container maxWidth="md" gutterBottom>
+        <MarkdownExample />
       </Container>
     </>
   );

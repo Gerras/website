@@ -1,5 +1,5 @@
-import Code, { InlineCode } from '../../design-library/components/Code/Code';
 import Container from '../../design-library/components/Container/Container';
+import InlineCode from '../../design-library/components/Code/InlineCode';
 import Link from '../../design-library/components/Link/Link';
 import React from 'react';
 import Typography from '../../design-library/components/Typography/Typography';
@@ -18,7 +18,9 @@ const Home: React.FC = () => {
       </div>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         I'm Kevin Brauen and this is my personal website. I am a software
-        engineer that loves React!
+        engineer and I love technologies for building websites and
+        webapplications. I tend to focus mostly on JavaScript related frameworks
+        and libraries, React being the primary one I spend most of my time on.
       </Typography>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         You might be asking why I created this site? Well, I think it makes
@@ -52,20 +54,6 @@ const Home: React.FC = () => {
         </Link>
         &nbsp; or <Link href="https://github.com/Gerras/">github</Link>.
       </Typography>
-      {/* TODO: REMOVE THIS */}
-      <Code>
-        {`
-  const ButtonExample: React.FC = () => { 
-    return (
-      <>
-        <Typography variant="h1" gutterBottom>
-          Buttons
-        </Typography>
-      </>
-      );
-    }
-              `}
-      </Code>
     </Container>
   );
 };
