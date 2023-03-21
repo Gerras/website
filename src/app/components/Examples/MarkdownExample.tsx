@@ -1,5 +1,5 @@
 import Code from '../../../design-library/components/Code/Code';
-import MarkdownContainer from '../../../design-library/components/Markdown/MarkDown';
+import MarkdownPreview from '../../../design-library/components/Markdown/MarkdownPreview';
 import React from 'react';
 import Typography from '../../../design-library/components/Typography/Typography';
 
@@ -22,7 +22,7 @@ const MarkdownExample: React.FC = () => {
     }
       `}
       </Code>
-      <MarkdownContainer />
+      <MarkdownPreview />
     </>
   );
 };
