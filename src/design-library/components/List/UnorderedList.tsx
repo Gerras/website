@@ -5,7 +5,9 @@ interface UnorderedListProps {
   children?: React.ReactNode;
 }
 
-const UnorderedListRoot = styled.ul``;
+const UnorderedListRoot = styled.ul`
+  margin-left: 1rem;
+`;
 
 const UnorderedList: React.FC<UnorderedListProps> = (props) => {
   return <UnorderedListRoot>{props.children}</UnorderedListRoot>;

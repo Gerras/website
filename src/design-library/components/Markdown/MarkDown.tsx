@@ -2,10 +2,15 @@ import MarkDownIt from 'markdown-it';
 import { MarkdownNode } from './MarkdownNode.class';
 import React from 'react';
 import { buildMarkdownNodes } from './Markdown.utils';
+import styled from 'styled-components';
 
 interface MarkDownProps {
   markdown: string;
 }
+
+const MarkdownContainer = styled.div`
+  padding: 0.325rem;
+`;
 
 const Markdown: React.FC<MarkDownProps> = ({ markdown }) => {
   const md = new MarkDownIt();
@@ -33,7 +38,7 @@ const Markdown: React.FC<MarkDownProps> = ({ markdown }) => {
     return renderNodes(parsedNodes);
   };
 
-  return <>{renderParsedMarkdown()}</>;
+  return <MarkdownContainer>{renderParsedMarkdown()}</MarkdownContainer>;
 };
 
 export default Markdown;

@@ -3,19 +3,18 @@ import styled from 'styled-components';
 
 interface MarkdownProps {
   id: string;
-  label: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
 
-const MarkdownContainer = styled.div``;
-const MarkdownRoot = styled.textarea``;
+const MarkdownRoot = styled.textarea`
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: ${(props) => props.theme.borderRadius};
+  resize: vertical;
+`;
 
 const MarkdownInput: React.FC<MarkdownProps> = (props) => {
-  return (
-    <MarkdownContainer>
-      <MarkdownRoot id={props.id} onChange={props.onChange} />
-    </MarkdownContainer>
-  );
+  return <MarkdownRoot id={props.id} onChange={props.onChange} />;
 };
 
 export default MarkdownInput;

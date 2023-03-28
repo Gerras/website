@@ -22,7 +22,7 @@ const MarkdownExample: React.FC = () => {
     }
       `}
       </Code>
-      <MarkdownPreview />
+      <MarkdownPreview inputId="markdown" label="Markdown" />
     </>
   );
 };
