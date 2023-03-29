@@ -1,6 +1,5 @@
-import { ComponentMap } from './Markdown.utils';
-import { Tags } from './Markdown.types';
-import Text from '../Typography/Text/Text';
+import { ComponentMap, InlineTextComponentMap } from './Markdown.utils';
+import { Tags, TextTypes } from './Markdown.types';
 import Token from 'markdown-it/lib/token';
 
 export class MarkdownNode {
@@ -13,9 +12,11 @@ export class MarkdownNode {
   private parentNode: MarkdownNode | null = null;
 
   constructor(token: Token) {
-    if (token.type === 'text') {
-      this.component = Text;
-      this.attributes = { children: token.content };
+    if (token.type in TextTypes) {
+      const { component, attributes } =
+        InlineTextComponentMap[token.type as keyof typeof TextTypes];
+      this.component = component;
+      this.attributes = { ...attributes, children: token.content };
     } else {
       const { component, attributes } = ComponentMap[token.tag as Tags];
       this.component = component;

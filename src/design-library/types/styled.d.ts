@@ -21,6 +21,18 @@ declare module 'styled-components' {
       primary: IPalette;
       secondary: IPalette;
       background: IPalette;
+      grey: {
+        g50: string;
+        g100: string;
+        g200: string;
+        g300: string;
+        g400: string;
+        g500: string;
+        g600: string;
+        g700: string;
+        g800: string;
+        g900: string;
+      };
     };
   }
 }

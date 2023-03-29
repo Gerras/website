@@ -26,6 +26,18 @@ export const defaultTheme: DefaultTheme = {
       rgbMain: hexToRgb('#ffffff'),
       contrastText: '#000000',
       rgbContrastText: hexToRgb('#000000')
+    },
+    grey: {
+      g50: '#fafafa',
+      g100: '#f5f5f5',
+      g200: '#eeeeee',
+      g300: '#e0e0e0',
+      g400: '#bdbdbd',
+      g500: '#9e9e9e',
+      g600: '#757575',
+      g700: '#616161',
+      g800: '#424242',
+      g900: '#212121'
     }
   }
 };
@@ -55,6 +67,18 @@ export const darkTheme: DefaultTheme = {
       rgbMain: hexToRgb('#222831'),
       contrastText: '#ffffff',
       rgbContrastText: hexToRgb('#ffffff')
+    },
+    grey: {
+      g50: '#fafafa',
+      g100: '#f5f5f5',
+      g200: '#eeeeee',
+      g300: '#e0e0e0',
+      g400: '#bdbdbd',
+      g500: '#9e9e9e',
+      g600: '#757575',
+      g700: '#616161',
+      g800: '#424242',
+      g900: '#212121'
     }
   }
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Divider from '../Divider/Divider';
+import ErrorBoundary from '../../utils/ErrorBoundary';
 import Label from '../Form/Label';
 import Markdown from './Markdown';
 import MarkdownInput from './MarkdownInput';
@@ -40,7 +41,9 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
       <Divider />
       <MarkdownContainer>
         <Typography gutterBottom>Preview</Typography>
-        <Markdown markdown={markDown} />
+        <ErrorBoundary fallback={<div>Whoops!</div>}>
+          <Markdown markdown={markDown} />
+        </ErrorBoundary>
       </MarkdownContainer>
     </MarkdownPreviewContainer>
   );

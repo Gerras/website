@@ -10,6 +10,9 @@ interface MarkDownProps {
 
 const MarkdownContainer = styled.div`
   padding: 0.325rem;
+  border: ${(props) => `1px solid ${props.theme.palette.grey.g500}`};
+  border-radius: ${(props) => props.theme.borderRadius};
+  min-height: 56px;
 `;
 
 const Markdown: React.FC<MarkDownProps> = ({ markdown }) => {

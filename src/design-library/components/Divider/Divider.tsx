@@ -1,36 +1,31 @@
-import styled, { CSSObject } from 'styled-components';
+import { CSSObject } from 'styled-components';
+import HorizontalDivider from './DividerTypes/HorizontalDivider';
 import React from 'react';
-import RootStyled from '../Root/Root';
+import VerticalDivider from './DividerTypes/VerticalDivider';
+
+type Direction = 'vertical' | 'horizontal';
 
 interface DividerProps {
   children?: React.ReactNode;
   directStyles?: CSSObject;
-  direction?: 'vertical' | 'horizontal';
+  direction?: Direction;
 }
 
-interface DividerRootProps {
-  directStyles?: CSSObject;
-  direction: 'vertical' | 'horizontal';
-}
-// Need to make a horizontal verision of this bad boy
-const DividerRoot = styled.hr<DividerRootProps>`
-  margin: 0px;
-  flex-shrink: 0;
-  border-width: 0px thin 0px 0px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.12); // Fix this coloring
-  height: auto;
-  align-self: stretch;
-`;
-
-const StyledDividerRoot = RootStyled(DividerRoot);
+// Function for now since we probably want dividers with text, which will be different.
+// Most likely styled divs.
+const getComponent = (direction: Direction) => {
+  if (direction === 'horizontal') {
+    return HorizontalDivider;
+  } else return VerticalDivider;
+};
 
 const Divider: React.FC<DividerProps> = (props) => {
   const direction = props.direction ?? 'vertical';
+
+  const Component = getComponent(direction);
+
   return (
-    <StyledDividerRoot directStyles={props.directStyles} direction={direction}>
-      {props.children}
-    </StyledDividerRoot>
+    <Component directStyles={props.directStyles}>{props.children}</Component>
   );
 };
 
