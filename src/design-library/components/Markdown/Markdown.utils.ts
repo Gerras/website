@@ -1,17 +1,20 @@
 import {
   ClosingTypes,
+  EmMarkdown,
   InlineTypes,
   MarkdownNodeType,
   OpeningTypes,
-  Tags,
-  TextTypes
+  RootTypes,
+  Tags
 } from './Markdown.types';
+import BoldEmphasis from '../Typography/Emphasis/BoldEmphasis';
 import Break from '../Space/Break';
 import Code from '../Code/Code';
 import Emphasis from '../Typography/Emphasis/Emphasis';
 import InlineCode from '../Code/InlineCode';
 import ListItem from '../List/ListItem';
 import { MarkdownNode } from './MarkdownNode.class';
+import OrderedList from '../List/OrderedList';
 import Text from '../Typography/Text/Text';
 import Token from 'markdown-it/lib/token';
 import Typography from '../Typography/Typography';
@@ -22,7 +25,7 @@ interface ComponentAttributeType {
   attributes: Record<string, string | boolean | number>;
 }
 
-export const ComponentMap: Record<Tags, ComponentAttributeType> = {
+export const TagComponentMap: Record<Tags, ComponentAttributeType> = {
   br: { component: Break, attributes: {} },
   p: { component: Typography, attributes: { gutterBottom: true } },
   h1: { component: Typography, attributes: { variant: 'h1' } },
@@ -31,29 +34,41 @@ export const ComponentMap: Record<Tags, ComponentAttributeType> = {
   h4: { component: Typography, attributes: { variant: 'h4' } },
   li: { component: ListItem, attributes: {} },
   ul: { component: UnorderedList, attributes: {} },
-  code: { component: Code, attributes: {} },
-  em: { component: Emphasis, attributes: {} }
+  ol: { component: OrderedList, attributes: {} },
+  code: { component: Code, attributes: {} }
 };
 
-export const InlineTextComponentMap: Record<
-  keyof typeof TextTypes,
-  ComponentAttributeType
+export const EmphasisComponentMap: Record<EmMarkdown, ComponentAttributeType> =
+  {
+    '*': { component: BoldEmphasis, attributes: {} },
+    _: { component: Emphasis, attributes: {} }
+  };
+
+// This is an improvement but the real cool part would be to have the markdownbuilder be able to build it's own ruleset.
+export const MarkdownNodeBuilder: Record<
+  MarkdownNodeType,
+  (token: Token) => ComponentAttributeType
 > = {
-  code_inline: { component: InlineCode, attributes: {} },
-  text: { component: Text, attributes: {} }
+  bullet_list_open: (token: Token) => TagComponentMap[token.tag as Tags],
+  code_inline: (token: Token) => ({
+    component: InlineCode,
+    attributes: { children: token.content }
+  }),
+  em_open: (token: Token) => EmphasisComponentMap[token.markup as EmMarkdown],
+  fence: (token: Token) => ({
+    component: Code,
+    attributes: { children: token.content }
+  }),
+  heading_open: (token: Token) => TagComponentMap[token.tag as Tags],
+  list_item_open: (token: Token) => TagComponentMap[token.tag as Tags],
+  ordered_list_open: (token: Token) => TagComponentMap[token.tag as Tags],
+  paragraph_open: (token: Token) => TagComponentMap[token.tag as Tags],
+  softbreak: (token: Token) => TagComponentMap[token.tag as Tags],
+  text: (token: Token) => ({
+    component: Text,
+    attributes: { children: token.content }
+  })
 };
-
-// TODO: Flush this out as a more holistic was of building Markdownnodes
-// export const NodeRuleBuilder: Record<
-//   MarkdownNodeType,
-//   (token: Token) => ComponentAttributeType
-// > = {
-//   bullet_list_open: () => ({ component: Break, attributes: {} }),
-//   code_inline: (token: Token) => ({
-//     component: InlineCode,
-//     attributes: { children: token.content }
-//   })
-// };
 
 export const buildMarkdownNodes = (unparsedTokens: Token[]): MarkdownNode[] => {
   const rootNodes: MarkdownNode[] = [];
@@ -64,12 +79,10 @@ export const buildMarkdownNodes = (unparsedTokens: Token[]): MarkdownNode[] => {
     });
 
   let currentNode: MarkdownNode | null = null;
-  let nesting = 0;
   const buildNode = (token: Token) => {
-    nesting += token.nesting;
     // If the token level is 0 and token is an opening type we are at a root node.S
-    if (token.level === 0 && nesting === 1 && token.type in OpeningTypes) {
-      const rootNode = new MarkdownNode(token);
+    if (token.level === 0 && token.type in RootTypes) {
+      const rootNode = new MarkdownNode(null, token);
       currentNode = rootNode;
       rootNodes.push(rootNode);
       return;
@@ -86,9 +99,8 @@ export const buildMarkdownNodes = (unparsedTokens: Token[]): MarkdownNode[] => {
      *  4. update the new node to be the current
      */
     if (token.type in OpeningTypes) {
-      const node = new MarkdownNode(token);
+      const node = new MarkdownNode(currentNode, token);
       currentNode.Children.push(node);
-      node.Parent = currentNode;
       currentNode = node;
     } else if (token.type in ClosingTypes) {
       // If we have a closing token type we want to set the current node to be the parent node.
@@ -97,7 +109,7 @@ export const buildMarkdownNodes = (unparsedTokens: Token[]): MarkdownNode[] => {
       // InlineTypes should always have children
       buildNodes(token.children);
     } else {
-      const node = new MarkdownNode(token);
+      const node = new MarkdownNode(currentNode, token);
       currentNode?.Children.push(node); // typescript bug. Gets confused because reassignment happens above, even though it isn't possible in this context.
     }
   };
