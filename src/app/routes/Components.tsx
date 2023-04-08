@@ -30,10 +30,10 @@ const Components: React.FC = () => {
         <MenuExample />
       </Container>
       <Container maxWidth="md" gutterBottom>
-        <TransitionExample />
+        <MarkdownExample />
       </Container>
       <Container maxWidth="md" gutterBottom>
-        <MarkdownExample />
+        <TransitionExample />
       </Container>
     </>
   );

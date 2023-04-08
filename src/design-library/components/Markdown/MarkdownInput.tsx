@@ -4,9 +4,10 @@ import styled from 'styled-components';
 interface MarkdownProps {
   id: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+  value?: string | ReadonlyArray<string> | number | undefined;
 }
 
-const MarkdownRoot = styled.textarea`
+const MarkdownInputRoot = styled.textarea`
   font-size: 1rem;
   padding: 8px;
   border-radius: ${(props) => props.theme.borderRadius};
@@ -14,7 +15,13 @@ const MarkdownRoot = styled.textarea`
 `;
 
 const MarkdownInput: React.FC<MarkdownProps> = (props) => {
-  return <MarkdownRoot id={props.id} onChange={props.onChange} />;
+  return (
+    <MarkdownInputRoot
+      id={props.id}
+      onChange={props.onChange}
+      value={props.value}
+    />
+  );
 };
 
 export default MarkdownInput;

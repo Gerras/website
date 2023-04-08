@@ -15,19 +15,20 @@ const CodeWrapper = styled.div`
 `;
 
 const Pre = styled.pre`
+  background: none;
   color: ${(props) => props.theme.palette.common.white};
   font-family: Consolas, Menlo, Monaco, source-code-pro;
-  background: none;
   font-feature-settings: normal;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
+  hyphens: none;
   line-height: 1.5;
   margin-bottom: 0;
+  padding: 1rem;
   tab-size: 4;
-  hyphens: none;
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
 `;
 
 const Code: React.FC<CodeProps> = (props) => {
