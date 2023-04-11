@@ -1,10 +1,14 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { getViewPortHeight, getViewPortWidth } from '../../utils/dom.utils';
 import styled from 'styled-components';
 
 interface MenuRootProps {
-  // left: number;
-  // top: number;
   x: number;
   y: number;
 }
@@ -29,66 +33,46 @@ const MenuRootStyledComponent = styled.div<MenuRootProps>`
 `;
 
 const MenuRoot: React.FC<MenuRootComponentProps> = (props) => {
-  // const [element, setElement] = useState<HTMLDivElement | null>(null);
-  // const menuListRefCallback = useCallback((instance: HTMLDivElement | null) => {
-  //   if (instance !== null) {
-  //     setElement(instance);
-  //   }
-  // }, []);
-
   const ref = useRef<HTMLDivElement | null>(null);
-  // const [calculatedOffset, setCalculatedOffset] = useState<number | undefined>(
-  //   props.left
-  // );
-
   const [domRect, setDomRect] = useState<DOMRect | undefined>();
-
-  // const onScreen = useElementIntersection(element);
-
-  // useEffect(() => {
-  //   const { elementBounds, intersectionType, rootBounds } = onScreen;
-  //   if (intersectionType === 'visible') {
-  //     setCalculatedOffset(props.left);
-  //   } else if (elementBounds !== null && rootBounds !== null) {
-  //     // This means that the right side of the element is out of screen
-  //     if (elementBounds.right > rootBounds.right) {
-  //       const rightDiff = elementBounds.right - rootBounds.right;
-  //       const adjustedLeft = elementBounds.left - rightDiff;
-  //       setCalculatedOffset(adjustedLeft - 10);
-  //     } else {
-  //       setCalculatedOffset(props.left);
-  //     }
-  //   }
-  // }, []);
 
   useLayoutEffect(() => {
     const domObject = ref.current?.getBoundingClientRect();
     setDomRect(domObject);
   }, []);
 
-  const viewPortWidth = getViewPortWidth();
-  const viewPortHeight = getViewPortHeight();
-  let menuX = props.left;
-  let menuY = props.parentDomRect.bottom;
-  console.log('menuY 1', menuY);
-  if (domRect) {
-    console.log('domRect.height', domRect.height);
-    console.log('viewPortHeight', viewPortHeight);
-    console.log('menuY 2', menuY);
-    if (menuY + domRect.height > viewPortHeight) {
-      menuY = props.parentDomRect.top;
-      console.log('menuY 3', menuY);
+  // Check and see if we are actually overflowing content. If we are add padding, if we aren't do not.
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = '17px';
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    };
+  }, []);
+
+  const { parentDomRect, left, children } = props;
+  const { menuX, menuY } = useMemo(() => {
+    const viewPortWidth = getViewPortWidth();
+    const viewPortHeight = getViewPortHeight();
+    let menuX = left;
+    let menuY = parentDomRect.bottom;
+    if (domRect) {
+      if (menuY + domRect.height > viewPortHeight) {
+        menuY = parentDomRect.top;
+      }
+      if (domRect.right > viewPortWidth) {
+        const rightDiff = domRect.right - viewPortWidth;
+        const adjustedLeft = domRect.left - rightDiff - 25;
+        menuX = adjustedLeft;
+      }
     }
-    if (domRect.right > viewPortWidth) {
-      const rightDiff = domRect.right - viewPortWidth;
-      const adjustedLeft = domRect.left - rightDiff - 25;
-      menuX = adjustedLeft;
-    }
-  }
+    return { menuX, menuY };
+  }, [parentDomRect, left, domRect]);
 
   return (
     <MenuRootStyledComponent ref={ref} y={menuY} x={menuX}>
-      {props.children}
+      {children}
     </MenuRootStyledComponent>
   );
 };

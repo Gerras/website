@@ -9,7 +9,9 @@ export const MenuContext = createContext<MenuContext | undefined>(undefined);
 const useMenuContext = () => {
   const context = useContext(MenuContext);
   if (!context) {
-    throw new Error('No context found for the menucontext. Please define one.');
+    throw new Error(
+      'No provider found for the menucontext. Please provide one before using this hook.'
+    );
   }
 
   return context;

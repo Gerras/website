@@ -41,15 +41,6 @@ export enum ClosingTypes {
   'em_close'
 }
 
-export const MarkdownTypeConst = {
-  ...BreakTypes,
-  ...ClosingTypes,
-  ...InlineTypes,
-  ...OpeningTypes,
-  ...TextTypes,
-  ...FenceTypes
-};
-
 export type MarkdownNodeType =
   | keyof typeof BreakTypes
   | keyof typeof OpeningTypes

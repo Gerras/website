@@ -16,9 +16,7 @@ const MarkdownContainer = styled.div`
 const Markdown: React.FC<MarkDownProps> = ({ markdown }) => {
   const md = new MarkDownIt();
   const parsed = md.parse(markdown, {});
-  console.log('parsed', parsed);
   const parsedNodes = buildMarkdownNodes(parsed);
-  console.log('nodes', parsedNodes);
 
   const renderParsedMarkdown = () => {
     const renderNodes = (nodes: MarkdownNode[]) => nodes.map(renderNode);
