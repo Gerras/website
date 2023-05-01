@@ -4,7 +4,7 @@ import { TypographyProps } from '../Typography/Typography';
 import TypographyRoot from '../Typography/TypographyRoot';
 import styled from 'styled-components';
 interface LabelProps extends TypographyProps {
-  id: string;
+  htmlFor: string;
 }
 
 const LabelBase = styled(TypographyRoot)`
@@ -24,7 +24,7 @@ const Label: React.FC<LabelProps> = (props) => {
       gutterBottom={gutterBottom}
       variant="p"
       directStyles={props.directStyles}
-      htmlFor={props.id}
+      htmlFor={props.htmlFor}
     >
       {props.children}
     </StyledLabelBase>

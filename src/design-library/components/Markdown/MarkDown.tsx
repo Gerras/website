@@ -26,7 +26,8 @@ const Markdown: React.FC<MarkDownProps> = ({ markdown }) => {
       if (!Component) return null;
       if (node.Children.length > 0) {
         return (
-          <Component {...node.Attributes}>
+          // Look into creating better keys for the preview.
+          <Component key={node.Key} {...node.Attributes}>
             {renderNodes(node.Children)}
           </Component>
         );

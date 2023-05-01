@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import Divider from '../Divider/Divider';
 import ErrorBoundary from '../../utils/ErrorBoundary';
-import Label from '../Form/Label';
+import Label from '../Label/Label';
 import Markdown from './Markdown';
 import MarkdownInput from './MarkdownInput';
 import Typography from '../Typography/Typography';
@@ -12,6 +12,8 @@ import styled from 'styled-components';
 interface MarkdownPreviewProps {
   inputId: string;
   label: string;
+  onChange?: (value: string) => void;
+  value?: Value;
 }
 
 type MarkdownVisibility = 'markdown' | 'preview' | 'both';
@@ -40,12 +42,14 @@ const MarkdownContainer = styled.div`
 
 const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
   const [markDown, setMarkDown] = useState<string>('');
-  const [textAreaValue, setTextAreaValue] = useState<Value>();
+  const [textAreaValue, setTextAreaValue] = useState<Value>(props.value);
   const [markdownVisibility, setMarkdownVisibility] =
     useState<MarkdownVisibility>('both');
   const handleOnChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-    setTextAreaValue(e.currentTarget.value);
-    setMarkDown(e.currentTarget.value);
+    const value = e.currentTarget.value;
+    setTextAreaValue(value);
+    setMarkDown(value);
+    props.onChange?.(value);
   };
 
   const renderMarkdownVisibility = () => {
@@ -62,7 +66,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
     if (markdownVisibility === 'markdown') {
       return (
         <>
-          <Label id={props.inputId} gutterBottom>
+          <Label htmlFor={props.inputId} gutterBottom>
             {props.label}
           </Label>
           <MarkdownInput
@@ -77,7 +81,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
     return (
       <MarkdownPreviewContainer>
         <MarkdownContainer>
-          <Label id={props.inputId} gutterBottom>
+          <Label htmlFor={props.inputId} gutterBottom>
             {props.label}
           </Label>
           <MarkdownInput
@@ -103,6 +107,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
         <Button
           variant="tertiary"
           size="sm"
+          type="button"
           directStyles={{ padding: 0, margin: '0 8px 0 0' }}
           onClick={() => setMarkdownVisibility('markdown')}
         >
@@ -112,6 +117,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
         <Button
           variant="tertiary"
           size="sm"
+          type="button"
           directStyles={{ padding: 0, margin: '0 8px 0 0' }}
           onClick={() => setMarkdownVisibility('preview')}
         >
@@ -121,6 +127,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
         <Button
           variant="tertiary"
           size="sm"
+          type="button"
           directStyles={{ padding: 0, margin: '0 8px 0 0' }}
           onClick={() => setMarkdownVisibility('both')}
         >

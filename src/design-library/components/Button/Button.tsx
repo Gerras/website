@@ -31,13 +31,14 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
 
   const ButtonComponent = buttonComponentMap[props.variant ?? 'primary'];
+  const type = props.type ?? 'button';
   return (
     <ButtonComponent
       id={props.id}
       onClick={props.onClick}
       size={size}
       directStyles={props.directStyles}
-      type={props.type}
+      type={type}
     >
       {props.children}
     </ButtonComponent>

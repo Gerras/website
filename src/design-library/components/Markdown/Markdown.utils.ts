@@ -47,26 +47,50 @@ export const EmphasisComponentMap: Record<EmMarkdown, ComponentAttributeType> =
 // This is an improvement but the real cool part would be to have the markdownbuilder be able to build it's own ruleset.
 export const MarkdownNodeBuilder: Record<
   MarkdownNodeType,
-  (token: Token) => ComponentAttributeType
+  (token: Token) => ComponentAttributeType & { key: string }
 > = {
-  bullet_list_open: (token: Token) => TagComponentMap[token.tag as Tags],
+  bullet_list_open: (token: Token) => ({
+    ...TagComponentMap[token.tag as Tags],
+    key: token.type
+  }),
   code_inline: (token: Token) => ({
     component: InlineCode,
-    attributes: { children: token.content }
+    attributes: { children: token.content },
+    key: token.type
   }),
-  em_open: (token: Token) => EmphasisComponentMap[token.markup as EmMarkdown],
+  em_open: (token: Token) => ({
+    ...EmphasisComponentMap[token.markup as EmMarkdown],
+    key: token.type
+  }),
   fence: (token: Token) => ({
     component: Code,
-    attributes: { children: token.content }
+    attributes: { children: token.content },
+    key: token.type
   }),
-  heading_open: (token: Token) => TagComponentMap[token.tag as Tags],
-  list_item_open: (token: Token) => TagComponentMap[token.tag as Tags],
-  ordered_list_open: (token: Token) => TagComponentMap[token.tag as Tags],
-  paragraph_open: (token: Token) => TagComponentMap[token.tag as Tags],
-  softbreak: (token: Token) => TagComponentMap[token.tag as Tags],
+  heading_open: (token: Token) => ({
+    ...TagComponentMap[token.tag as Tags],
+    key: token.type
+  }),
+  list_item_open: (token: Token) => ({
+    ...TagComponentMap[token.tag as Tags],
+    key: token.type
+  }),
+  ordered_list_open: (token: Token) => ({
+    ...TagComponentMap[token.tag as Tags],
+    key: token.type
+  }),
+  paragraph_open: (token: Token) => ({
+    ...TagComponentMap[token.tag as Tags],
+    key: token.type
+  }),
+  softbreak: (token: Token) => ({
+    ...TagComponentMap[token.tag as Tags],
+    key: token.type
+  }),
   text: (token: Token) => ({
     component: Text,
-    attributes: { children: token.content }
+    attributes: { children: token.content },
+    key: token.type
   })
 };
 

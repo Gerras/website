@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { CSSObject } from 'styled-components';
-import Label from '../Label';
+import Label from '../../Label/Label';
 import { TypographyProps } from '../../Typography/Typography';
 import { useFormContext } from '../Form.context';
 
@@ -16,7 +16,7 @@ const FormLabel: React.FC<LabelProps> = (props) => {
     };
   }, [inline]);
   return (
-    <Label directStyles={styles} gutterBottom={!inline} id={props.htmlFor}>
+    <Label directStyles={styles} gutterBottom={!inline} htmlFor={props.htmlFor}>
       {props.children}
     </Label>
   );

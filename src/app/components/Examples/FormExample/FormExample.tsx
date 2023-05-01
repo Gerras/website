@@ -1,15 +1,17 @@
-import Button from '../../../design-library/components/Button/Button';
-import Form from '../../../design-library/components/Form/Form';
-import FormInput from '../../../design-library/components/Form/Input/FormInput';
-import FormItem from '../../../design-library/components/Form/FormItem/FormItem';
-import FormLabel from '../../../design-library/components/Form/Label/FormLabel';
+import Button from '../../../../design-library/components/Button/Button';
+import Form from '../../../../design-library/components/Form/Form';
+import FormInput from '../../../../design-library/components/Form/FormInput/FormInput';
+import FormItem from '../../../../design-library/components/Form/FormItem/FormItem';
+import FormLabel from '../../../../design-library/components/Form/FormLabel/FormLabel';
+import MarkDownPreviewFormInput from './MarkdownPreviewFormInput';
 import React from 'react';
-import Typography from '../../../design-library/components/Typography/Typography';
+import Typography from '../../../../design-library/components/Typography/Typography';
 
 interface FormShape {
   text?: string;
   text2?: string;
   drone?: 'huey' | 'dewey' | 'louie';
+  markdown?: string;
 }
 
 const FormExample: React.FC = () => {
@@ -45,6 +47,13 @@ const FormExample: React.FC = () => {
           <FormInput type="radio" id="dewey" name="drone" value="dewey" />
           <FormLabel htmlFor="louie">Louie</FormLabel>
           <FormInput type="radio" id="louie" name="drone" value="louie" />
+        </FormItem>
+        <FormItem>
+          <MarkDownPreviewFormInput
+            inputId="markdown"
+            label="Markdown"
+            name="markdown"
+          />
         </FormItem>
         <div>
           <Button

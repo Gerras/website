@@ -11,12 +11,15 @@ export class MarkdownNode {
 
   private parentNode: MarkdownNode | null = null;
 
+  private key: string;
+
   constructor(parentNode: MarkdownNode | null, token: Token) {
     const rule = MarkdownNodeBuilder[token.type as MarkdownNodeType];
-    const { component, attributes } = rule(token);
+    const { component, attributes, key } = rule(token);
     this.component = component;
     this.attributes = attributes;
     this.parentNode = parentNode;
+    this.key = key;
   }
 
   public get Children() {
@@ -29,6 +32,10 @@ export class MarkdownNode {
 
   public get Attributes() {
     return this.attributes;
+  }
+
+  public get Key() {
+    return this.key;
   }
 
   public get Parent() {
