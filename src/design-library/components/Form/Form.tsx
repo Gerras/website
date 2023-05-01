@@ -1,55 +1,68 @@
 import { FormContext, IFormContext } from './Form.context';
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 interface FormProps<T> {
   children?: React.ReactNode;
   initialState: T;
   onSubmit?: (formValues: T) => void;
+  inline?: boolean;
 }
 
-// type InputEvent = HTMLElement;
-
-const FormRoot = styled.form``;
+const FormRoot = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Form = <T extends object>(props: FormProps<T>) => {
   const [formState, setFormState] = useState<T>(props.initialState);
-  const handleOnChange: React.FormEventHandler<HTMLFormElement> = (event) => {
-    console.log('change', event);
-    console.log('currentTarget', event.currentTarget);
-    console.log('target', (event.target as any).value);
+
+  const handleOnChange: React.FormEventHandler<HTMLFormElement> = () => {
+    // formOnChange, not sure if we need this yet.
   };
-  const handleOnSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-    console.log('submit', event);
-    props.onSubmit?.(formState);
-  };
+
+  const handleOnSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.stopPropagation();
+      event.preventDefault();
+      props.onSubmit?.(formState);
+    },
+    [props.onSubmit, formState]
+  );
+
   const resetForm = () => {
     setFormState(props.initialState);
   };
 
-  const onValueChange = (
-    name: keyof T,
-    value: string | boolean | number | object
-  ) => {
-    const newFormState = { ...formState, [name]: value };
-    console.log('newFORMSTATE', newFormState);
-    setFormState(newFormState);
+  const handleOnReset = () => {
+    resetForm();
   };
+
+  const onValueChange = useCallback(
+    (name: keyof T, value: string | boolean | number | object) => {
+      const newFormState = { ...formState, [name]: value };
+      setFormState(newFormState);
+    },
+    [formState, setFormState]
+  );
 
   const contextValue: IFormContext<T> = useMemo(
     () => ({
       form: formState,
       reset: resetForm,
-      onValueChange
+      onValueChange,
+      inline: props.inline ?? false
     }),
-    []
+    [formState, resetForm, onValueChange, props.inline]
   );
 
   return (
     <FormContext.Provider value={contextValue}>
-      <FormRoot onChange={handleOnChange} onSubmit={handleOnSubmit}>
+      <FormRoot
+        onChange={handleOnChange}
+        onSubmit={handleOnSubmit}
+        onReset={handleOnReset}
+      >
         {props.children}
       </FormRoot>
     </FormContext.Provider>

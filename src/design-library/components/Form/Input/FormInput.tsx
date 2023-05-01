@@ -1,28 +1,22 @@
-import React, { InputHTMLAttributes } from 'react';
-import Input from './Input';
-import { useFormContext } from '../Form.context';
+import { InputTypes, formInputComponentMap } from './Input.utils';
+import React, { ComponentType, InputHTMLAttributes } from 'react';
 
-interface FormInputProps<T extends object>
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> {
+export interface FormInputProps<T>
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'checked'> {
   children?: React.ReactNode;
-  id: keyof T;
+  name: keyof T;
 }
 
 const FormInput = <T extends object>(props: FormInputProps<T>) => {
-  const { id, ...restProps } = props;
-  const context = useFormContext<T>();
-
-  const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    const value = event.target.value;
-    context.onValueChange(id, value);
-  };
-
+  const { type, children, name, ...restProps } = props;
+  const componentType = (props.type ?? 'text') as InputTypes;
+  const InputComponent = formInputComponentMap[componentType] as ComponentType<
+    FormInputProps<T>
+  >;
   return (
-    <Input id={id as string} {...restProps} onChange={handleOnChange}>
-      {props.children}
-    </Input>
+    <InputComponent name={name} type={type} {...restProps}>
+      {children}
+    </InputComponent>
   );
 };
 

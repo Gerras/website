@@ -9,35 +9,35 @@ const ButtonExample: React.FC = () => {
         Buttons
       </Typography>
       <div>
-        <Button type="primary" size="sm">
+        <Button variant="primary" size="sm">
           Small
         </Button>
-        <Button type="primary" size="md">
+        <Button variant="primary" size="md">
           Medium
         </Button>
-        <Button type="primary" size="lg">
+        <Button variant="primary" size="lg">
           Large
         </Button>
       </div>
       <div>
-        <Button type="secondary" size="sm">
+        <Button variant="secondary" size="sm">
           Small
         </Button>
-        <Button type="secondary" size="md">
+        <Button variant="secondary" size="md">
           Medium
         </Button>
-        <Button type="secondary" size="lg">
+        <Button variant="secondary" size="lg">
           Large
         </Button>
       </div>
       <div>
-        <Button type="tertiary" size="sm">
+        <Button variant="tertiary" size="sm">
           small
         </Button>
-        <Button type="tertiary" size="md">
+        <Button variant="tertiary" size="md">
           Medium
         </Button>
-        <Button type="tertiary" size="lg">
+        <Button variant="tertiary" size="lg">
           Large
         </Button>
       </div>

@@ -7,6 +7,7 @@ export interface IFormContext<T extends object> {
     name: keyof T,
     value: string | boolean | number | object
   ) => void;
+  inline: boolean;
 }
 
 export const FormContext = createContext<IFormContext<object> | null>(null);

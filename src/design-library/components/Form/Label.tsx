@@ -7,29 +7,28 @@ interface LabelProps extends TypographyProps {
   id: string;
 }
 
-const LinkBase = styled(TypographyRoot)`
+const LabelBase = styled(TypographyRoot)`
   color: ${(props) => props.theme.palette.background.contrastText};
 `;
 
-const StyledLinkBase = RootStyled(LinkBase);
+const StyledLabelBase = RootStyled(LabelBase);
 
-const Link: React.FC<LabelProps> = (props) => {
-  const variant = props.variant ?? 'p';
+const Label: React.FC<LabelProps> = (props) => {
   const gutterBottom = !!props.gutterBottom;
   const display = props.display;
 
   return (
-    <StyledLinkBase
+    <StyledLabelBase
       as="label"
       display={display}
       gutterBottom={gutterBottom}
-      variant={variant}
+      variant="p"
       directStyles={props.directStyles}
-      id={props.id}
+      htmlFor={props.id}
     >
       {props.children}
-    </StyledLinkBase>
+    </StyledLabelBase>
   );
 };
 
-export default Link;
+export default Label;

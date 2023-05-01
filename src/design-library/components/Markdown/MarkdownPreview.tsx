@@ -101,7 +101,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
     <MarkdownPreviewOuter>
       <ButtonContainer>
         <Button
-          type="tertiary"
+          variant="tertiary"
           size="sm"
           directStyles={{ padding: 0, margin: '0 8px 0 0' }}
           onClick={() => setMarkdownVisibility('markdown')}
@@ -110,7 +110,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
         </Button>
         <Divider />
         <Button
-          type="tertiary"
+          variant="tertiary"
           size="sm"
           directStyles={{ padding: 0, margin: '0 8px 0 0' }}
           onClick={() => setMarkdownVisibility('preview')}
@@ -119,7 +119,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
         </Button>
         <Divider />
         <Button
-          type="tertiary"
+          variant="tertiary"
           size="sm"
           directStyles={{ padding: 0, margin: '0 8px 0 0' }}
           onClick={() => setMarkdownVisibility('both')}

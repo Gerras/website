@@ -9,9 +9,10 @@ interface ButtonProps {
   id?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   size?: ButtonSize;
-  type?: ButtonType;
+  variant?: ButtonType;
   href?: string;
   directStyles?: CSSObject;
+  type?: 'submit' | 'reset' | 'button';
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -29,13 +30,14 @@ const Button: React.FC<ButtonProps> = (props) => {
     );
   }
 
-  const ButtonComponent = buttonComponentMap[props.type ?? 'primary'];
+  const ButtonComponent = buttonComponentMap[props.variant ?? 'primary'];
   return (
     <ButtonComponent
       id={props.id}
       onClick={props.onClick}
       size={size}
       directStyles={props.directStyles}
+      type={props.type}
     >
       {props.children}
     </ButtonComponent>
