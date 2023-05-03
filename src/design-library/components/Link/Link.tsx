@@ -1,5 +1,5 @@
 import React from 'react';
-import RootStyled from '../Root/Root';
+import RootStyled from '../RootStyled/RootStyled';
 import { TypographyProps } from '../Typography/Typography';
 import TypographyRoot from '../Typography/TypographyRoot';
 import styled from 'styled-components';

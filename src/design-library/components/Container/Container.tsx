@@ -1,6 +1,6 @@
 import styled, { CSSObject } from 'styled-components';
 import React from 'react';
-import RootStyled from '../Root/Root';
+import RootStyled from '../RootStyled/RootStyled';
 
 type MaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

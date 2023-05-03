@@ -6,12 +6,8 @@ import React, {
   useState
 } from 'react';
 import { getViewPortHeight, getViewPortWidth } from '../../utils/dom.utils';
-import styled from 'styled-components';
-
-interface MenuRootProps {
-  x: number;
-  y: number;
-}
+import { CSSObject } from 'styled-components';
+import OverlayContent from '../Overlay/OverlayContent';
 
 interface MenuRootComponentProps {
   children: React.ReactNode;
@@ -19,18 +15,6 @@ interface MenuRootComponentProps {
   top: number;
   parentDomRect: DOMRect;
 }
-
-const MenuRootStyledComponent = styled.div<MenuRootProps>`
-  top: 0px;
-  left: 0px;
-  position: absolute;
-  opacity: 1;
-  border-radius: 4px;
-  box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px,
-    rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
-  background-color: ${(props) => props.theme.palette.background.main};
-  transform: ${(props) => `translate3d(${props.x}px, ${props.y}px, 0)`};
-`;
 
 const MenuRoot: React.FC<MenuRootComponentProps> = (props) => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -41,7 +25,7 @@ const MenuRoot: React.FC<MenuRootComponentProps> = (props) => {
     setDomRect(domObject);
   }, []);
 
-  // Check and see if we are actually overflowing content. If we are add padding, if we aren't do not.
+  // TODO: Check and see if we are actually overflowing content. If we are add padding, if we aren't do not.
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.style.paddingRight = '17px';
@@ -70,10 +54,17 @@ const MenuRoot: React.FC<MenuRootComponentProps> = (props) => {
     return { menuX, menuY };
   }, [parentDomRect, left, domRect]);
 
+  const styles: CSSObject = {
+    top: '0px',
+    left: '0px',
+    position: 'absolute',
+    transform: `translate3d(${menuX}px, ${menuY}px, 0)`
+  };
+
   return (
-    <MenuRootStyledComponent ref={ref} y={menuY} x={menuX}>
+    <OverlayContent ref={ref} shadow={6} directStyles={styles}>
       {children}
-    </MenuRootStyledComponent>
+    </OverlayContent>
   );
 };
 

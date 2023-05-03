@@ -2,7 +2,7 @@ import styled, { CSSObject } from 'styled-components';
 import ButtonRoot from './ButtonRoot';
 import { ButtonSize } from '../Button.types';
 import React from 'react';
-import RootStyled from '../../Root/Root';
+import RootStyled from '../../RootStyled/RootStyled';
 import { paddingMap } from '../Button.utils';
 
 interface LinkButtonProps {

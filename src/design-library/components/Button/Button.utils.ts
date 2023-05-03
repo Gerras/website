@@ -2,7 +2,7 @@ import { ButtonSize, ButtonType } from './Button.types';
 import { DefaultTheme, StyledComponent } from 'styled-components';
 import { ButtonRootProps } from './ButtonTypes/ButtonRoot';
 import PrimaryButton from './ButtonTypes/PrimaryButton';
-import RootStyled from '../Root/Root';
+import RootStyled from '../RootStyled/RootStyled';
 import SecondaryButton from './ButtonTypes/SecondaryButton';
 import TertiaryButton from './ButtonTypes/TertiaryButton';
 

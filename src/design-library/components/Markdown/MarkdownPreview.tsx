@@ -118,7 +118,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
           variant="tertiary"
           size="sm"
           type="button"
-          directStyles={{ padding: 0, margin: '0 8px 0 0' }}
+          directStyles={{ padding: 0, margin: 0 }}
           onClick={() => setMarkdownVisibility('preview')}
         >
           Preview
@@ -128,7 +128,7 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
           variant="tertiary"
           size="sm"
           type="button"
-          directStyles={{ padding: 0, margin: '0 8px 0 0' }}
+          directStyles={{ padding: 0, margin: 0 }}
           onClick={() => setMarkdownVisibility('both')}
         >
           Both

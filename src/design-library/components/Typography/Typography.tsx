@@ -1,7 +1,7 @@
 import { Display, Variant } from './Typography.types';
 import React, { ReactNode } from 'react';
 import { CSSObject } from 'styled-components';
-import RootStyled from '../Root/Root';
+import RootStyled from '../RootStyled/RootStyled';
 import TypographyRoot from './TypographyRoot';
 
 export interface TypographyProps {
