@@ -15,13 +15,13 @@ export interface TypographyProps {
 const StyledTypoGraphyRoot = RootStyled(TypographyRoot);
 
 const Typography: React.FC<TypographyProps> = (props) => {
-  const variant = props.variant ?? 'p';
+  const variant = props.variant ?? 'span';
   const gutterBottom = !!props.gutterBottom;
   const display = props.display;
 
   return (
     <StyledTypoGraphyRoot
-      as={variant}
+      as={props.variant}
       display={display}
       gutterBottom={gutterBottom}
       variant={variant}

@@ -56,7 +56,9 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = (props) => {
     if (markdownVisibility === 'preview') {
       return (
         <>
-          <Typography gutterBottom>Preview</Typography>
+          <Typography variant="p" gutterBottom>
+            Preview
+          </Typography>
           <ErrorBoundary fallback={<div>Whoops!</div>}>
             <Markdown markdown={markDown} />
           </ErrorBoundary>

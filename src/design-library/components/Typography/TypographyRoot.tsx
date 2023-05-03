@@ -10,6 +10,7 @@ interface TypographyRootProps {
 }
 
 const fontSizeMap: Record<Variant, FontSize> = {
+  span: '1rem',
   p: '1rem',
   h6: '1.5rem',
   h5: '2rem',

@@ -12,13 +12,13 @@ import Break from '../Space/Break';
 import Code from '../Code/Code';
 import Emphasis from '../Typography/Emphasis/Emphasis';
 import InlineCode from '../Code/InlineCode';
-import ListItem from '../List/ListItem';
+import ListItem from '../List/Markdown/ListItem';
 import { MarkdownNode } from './MarkdownNode.class';
-import OrderedList from '../List/OrderedList';
+import OrderedList from '../List/Markdown/OrderedList';
 import Text from '../Typography/Text/Text';
 import Token from 'markdown-it/lib/token';
 import Typography from '../Typography/Typography';
-import UnorderedList from '../List/UnorderedList';
+import UnorderedList from '../List/Markdown/UnorderedList';
 
 interface ComponentAttributeType {
   component: React.FC<any>; // Would like to get rid of this any at some point. Would need generics which is fun with constants.
@@ -27,7 +27,10 @@ interface ComponentAttributeType {
 
 export const TagComponentMap: Record<Tags, ComponentAttributeType> = {
   br: { component: Break, attributes: {} },
-  p: { component: Typography, attributes: { gutterBottom: true } },
+  p: {
+    component: Typography,
+    attributes: { variant: 'p', gutterBottom: true }
+  },
   h1: { component: Typography, attributes: { variant: 'h1' } },
   h2: { component: Typography, attributes: { variant: 'h2' } },
   h3: { component: Typography, attributes: { variant: 'h3' } },

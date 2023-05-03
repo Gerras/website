@@ -18,7 +18,9 @@ const TransitionExample: React.FC = () => {
       </Typography>
       <Button onClick={handleOnFadeInButtonClick}>Fade Transition</Button>
       <FadeTransition duration={300} in={open}>
-        <Typography>This is an example of a fade in transition.</Typography>
+        <Typography variant="p">
+          This is an example of a fade in transition.
+        </Typography>
         <Image src="https://petapixel.com/assets/uploads/2022/08/fdfs19-800x533.jpg" />
       </FadeTransition>
     </>

@@ -18,8 +18,8 @@ const Home: React.FC = () => {
       </div>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
         I'm Kevin Brauen and this is my personal website. I am a software
-        engineer and I love technologies for building websites and
-        webapplications. I tend to focus mostly on JavaScript related frameworks
+        engineer and I love technologies for building websites and web
+        applications. I tend to focus mostly on JavaScript related frameworks
         and libraries, React being the primary one I spend most of my time on.
       </Typography>
       <Typography variant="p" directStyles={{ marginBottom: '0.75em' }}>
